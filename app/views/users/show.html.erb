@@ -1,0 +1,52 @@
+<%= render 'shared/category' %>
+<div class="col-lg-8">
+	<% if @info.present? %>
+	<div class="user_info">
+		<div class="user_info_text">
+		<h3><%= @user.nickname %>さんの基本情報</h3>
+		</div>
+		<div class="col-lg-5">
+			<div class="user_img">
+				<%= attachment_image_tag @user,:image %>
+			</div>
+		</div>
+		<div class="col-lg-7">
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <td><h6>ニックネーム</h6></td>
+			        <td><%= @user.nickname %></td>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>国籍</td>
+			        <td><%= @user.nationality %>
+			      </tr>
+			      <tr>
+			        <td>年齢</td>
+			        <td><%= @user.age %></td>
+			      </tr>
+			      <tr>
+			        <td>性別</td>
+			        <td><%= @user.gender %></td>
+			      </tr>
+			    </tbody>
+			 </table>
+				<%= link_to edit_user_path(current_user) do %>
+					<div class="btn btn-black">編集</div>
+				<% end %>
+		</div>
+	<% else %>
+		<div class="user_info">
+		<div class="user_info_text">
+			登録されたユーザ情報がありません。
+			<%= link_to edit_user_path do %>
+			<p>ユーザ情報登録</p>
+			<% end %>
+		</div>
+		</div>
+	<% end %>
+</div>
+<!-- container-fluid divタグ閉じ -->
+</div>

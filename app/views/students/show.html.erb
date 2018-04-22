@@ -1,0 +1,47 @@
+<%= render 'shared/category' %>
+<div class="col-lg-8">
+	<% if @info.present? %>
+	<div class="user_info">
+		<div class="user_info_text">
+		<h3><%= @student.user.nickname %>さんの生徒情報</h3>
+		</div>
+		<div class="col-lg-5">
+			<div class="user_img">
+				<%= attachment_image_tag @student.user,:image %>
+			</div>
+		</div>
+		<div class="col-lg-7">
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <td><h6>予算</h6></td> <td><%= @student.budget %>/ 1時間</td>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>母国語</td>
+			        <td><%= @student.first_language %>
+			      </tr>
+			      <tr>
+			        <td>メッセージ</td>
+			        <td><%= @student.message %></td>
+			      </tr>
+			    </tbody>
+			 </table>
+				<%= link_to edit_student_path(current_user) do %>
+					<div class="btn btn-black">編集</div>
+				<% end %>
+		</div>
+	<% else %>
+		<div class="user_info">
+		<div class="user_info_text">
+			登録された生徒情報がありません。
+			<%= link_to new_user_student_path(current_user) do %>
+			<p>生徒情報登録</p>
+			<% end %>
+		</div>
+		</div>
+	<% end %>
+</div>
+<!-- container-fluid divタグ閉じ -->
+</div>

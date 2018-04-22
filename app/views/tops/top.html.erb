@@ -1,0 +1,66 @@
+<div class="top_back_image">
+	<div class="top_image_box">
+		<div class="top_image">
+				<%= image_tag("logo_black.png", :class => 'top_logo') %>
+			<div class="top_text">
+			<p>語学のベストパートナーを見つけるサイト<p>
+			</div>
+			<div class="buttons">
+				<%= link_to new_user_session_path do %>
+				<div class="btn btn-default">Log in</div><br>
+				<% end %>
+				<%= link_to new_user_registration_path do %>
+					<div class="btn btn-default">Sign up</div><br>
+				<% end %>
+				<div class="about">What's Lang Port?</div><br>
+				<div class="triangle_animation">▼</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="about">
+		<div class="col-log-10 col-lg-offset-1">
+			<div class="nav_left_box">
+				<nav class="clearfix">
+					<a href="students_index.html"><div class="nav_list_item_left">Find student</div></a>
+					<a href="teachers_index.html"><div class="nav_list_item_left">Find teacher</div></a>
+				</nav>
+			</div>
+			<div class="about_logo_box">
+				<%= image_tag("logo_black.png", :class => 'about_logo') %>
+			</div>
+			<div class="nav_right_box">
+				<nav class="clearfix">
+					<div class="nav_list_item_right">Log in</div></a>
+					<% link_to new_user_registration_path do %>
+					<div class="nav_list_item_right">Sign up</div>
+					<% end %>
+				</nav>
+			</div>
+		</div>
+		</header>
+		<div class="col-lg-10 col-lg-offset-1">
+			<div class="col-lg-6">
+				<div class="about_image"></div>
+			</div>
+			<div class="col-lg-6">
+				<div class="subtitle_box">
+					<div class="about_subtitle">
+						<p>Find your<br>
+						own<br>
+						students and<br>
+						teachers</p>
+					</div>
+				</div>
+					<div class="about_text">
+						<p>あなたの教えたい、学びたい言語にあった<br>
+						パートナーを地域ごとに<br>
+						検索できます。<br>
+						早速Findしてみましょう！</p>
+					</div>
+					<%= link_to rules_path do %>
+					<div class="rules_animation">Rules!</div>
+					<% end %>
+			</div>
+		</div>
+	</div>

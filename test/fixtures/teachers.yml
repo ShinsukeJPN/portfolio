@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  language_teacher_id: 1
+  budget: 1
+  japanese_level: 1
+  message: MyText
+  first_language: 1
+
+two:
+  user_id: 1
+  language_teacher_id: 1
+  budget: 1
+  japanese_level: 1
+  message: MyText
+  first_language: 1

@@ -1,0 +1,38 @@
+<%= render 'shared/category' %>
+<div class="col-lg-8">
+	<h2 class="request_text">メッセージ一覧</h2>
+	<ul class="nav nav-tabs">
+		<li><a data-toggle="tab" href="#home">先生とのメッセージ一覧</a></li>
+		<li><a data-toggle="tab" href="#menu1">生徒とのメッセージ一覧</a></li>
+	</ul>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<h3>先生とのメッセージ一覧</h3>
+					<% @with_teacher.each do |r| %>
+						<div class="request_box">
+							<%= link_to room_messages_path(r) do %>
+								<div class="request_img">
+								<%= attachment_image_tag r.teacher.user,:image %>
+								</div>
+							<%= r.teacher.user.nickname %>とのメッセージ
+							<%= r.message.created_at.strftime('%Y/%m/%d') %>
+							<% end %>
+						</div>
+					<% end %>
+			</div>
+			<div id="menu1" calss="tab-pane fade">
+				<h3>生徒とのメッセージ一覧</h3>
+					<% @with_student.each do |r| %>
+						<div class="request_box">
+							<%= link_to room_messages_path(r) do %>
+								<div class="request_img">
+								<%= attachment_image_tag r.student.user,:image %>
+								</div>
+							<%= r.student.user.nickname %>さんとのメッセージ
+							<% end %>
+						</div>
+					<% end %>
+			</div>
+		</div>
+<!-- container-fluid divタグ閉じ -->
+</div>

@@ -1,0 +1,42 @@
+<%= render 'shared/category', user: @user, student: @student %>
+	<div class="col-lg-8">
+		<div class="user_info">
+			<div class="user_info_text">
+				<%# @room.receiver_user_id = params[:user_id] %>
+				<%# @name = @room.receiver_user_id.user.nickname %>
+				<h3>@nameさんとのメッセージ</h3>
+					<%# if @over_ten %>
+						<%#= link_to "メッセージを全て表示", %>
+					<%# end %>
+						<% if @messages.present? %>
+							<% @messages.each do |m| %>
+								<% if m.send_user_id == current_user.id %>
+									<div class="item-right"%>
+										<div class="balloon-right">
+											<%= m.comment %><br>
+										</div>
+											<%= m.created_at.strftime('%Y/%m/%d') %>
+									</div>
+								<% else %>
+									<div class="item-left">
+										<div class="balloon-left">
+											<%= m.comment %>
+										</div>
+											<%= m.created_at %>
+									</div>
+								<% end %>
+							<% end %>
+						<% else %>
+							<p>@nameさんとの初めてのメッセージです！</p>
+						<% end %>
+						<%= form_for(@message, url: room_messages_path) do |f| %>
+							<%= f.text_area :comment %>
+							<%= f.hidden_field :send_user_id, :value => current_user.id %>
+							<%= f.hidden_field :room_id, :value => @room.id %>
+							<%= f.submit "送信" %>
+						<% end %>
+			</div>
+		</div>
+	</div>
+<!-- 部分テンプレート閉じタグ -->
+</div>

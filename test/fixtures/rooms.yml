@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  teacher_id: 1
+  send_user_id: 1
+  receiver_user_id: 1
+
+two:
+  student_id: 1
+  teacher_id: 1
+  send_user_id: 1
+  receiver_user_id: 1

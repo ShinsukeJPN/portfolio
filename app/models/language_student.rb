@@ -1,0 +1,2 @@
+class LanguageStudent < ApplicationRecord
+end

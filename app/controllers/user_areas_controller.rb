@@ -1,0 +1,2 @@
+class UserAreasController < ApplicationController
+end

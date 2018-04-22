@@ -1,0 +1,80 @@
+<%= render 'shared/category' %>
+	<div class="col-lg-8">
+			<div class="search_box">
+				<div class="search_text">
+					<p>先生を検索<br>
+					<span class="dropdown">
+						  <label class="control-label col-sm-2" for=>価格:</label>
+                      <span class="col-sm-4">
+                      <select class="form-control" id="@s">
+                        <option>〜¥1,500/1h</option>
+                        <option>〜¥2,000/1h</option>
+                        <option>〜¥2,500/1h</option>
+                        <option>〜¥3,000/1h</option>
+                        <option>¥3,000〜/1h</option>
+                      </select>
+                  	  </span>
+			      	</span><br><br>
+			      	<div class="area_box">
+					エリア
+						<form action="cgi-bin/abc.cgi" method="post">
+						<p>
+						<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
+						<input type="checkbox" name="riyu" value="2">新宿区
+						<input type="checkbox" name="riyu" value="3">大田区
+						<input type="checkbox" name="riyu" value="1" checked="checked">品川区
+						<input type="checkbox" name="riyu" value="2">世田谷区
+						<input type="checkbox" name="riyu" value="3">港区
+						<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
+						<input type="checkbox" name="riyu" value="2">新宿区
+						<input type="checkbox" name="riyu" value="3">大田区
+						<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
+						<input type="checkbox" name="riyu" value="2">新宿区
+						<input type="checkbox" name="riyu" value="3">大田区
+						</p>
+						</form>
+					</div>
+					言語
+						<form action="cgi-bin/abc.cgi" method="post">
+						<p>
+						<input type="checkbox" name="riyu" value="1" checked="checked">英語
+						<input type="checkbox" name="riyu" value="2">中国語（繁体字)
+						<input type="checkbox" name="riyu" value="3">中国語(簡体字)
+						<input type="checkbox" name="riyu" value="1" checked="checked">スペイン語
+						<input type="checkbox" name="riyu" value="2">イタリア語
+						<input type="checkbox" name="riyu" value="3">ドイツ語<br>
+						<input type="checkbox" name="riyu" value="1" checked="checked">フランス語
+						<input type="checkbox" name="riyu" value="2">ロシア語
+						<input type="checkbox" name="riyu" value="3">タイ語
+						<input type="checkbox" name="riyu" value="1" checked="checked">ポルトガル語
+						<input type="checkbox" name="riyu" value="2">その他の言語
+						</p>
+						</form>
+			<span class="btn btn-black">Search!</span></p>
+				</div>
+			</div>
+			<% @teachers.each do |t| %>
+					<div class="col-lg-6">
+						<div class="index_box">
+							<div class="index_img">
+							<%= attachment_image_tag t.user,:image, class:"index_img", fallback: "No_img.jpg" %>
+							</div>
+							<table>
+								<tr>
+									<td><div class="fa fa-user"><%= t.user.nickname %>--<%= t.user.age %></td>
+								</tr>
+								<tr>
+									<td><div class="fa fa-comment"><%= t.message %></td>
+								</tr>
+									<td><%= form_for(@request, url: teacher_requests_path(t.id), method: :post) do |f| %>
+										<%=  f.hidden_field :student_id, :value => current_user.id %>
+										<%= f.hidden_field :teacher_id, :value => t.id %>
+										<%= f.submit "メッセージリクエスト", class:"btn btn-default" %>
+										<% end %>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+			<% end %>
+		</div>

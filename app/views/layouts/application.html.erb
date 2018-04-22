@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<%= csrf_meta_tags %>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<html lang="en">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application' %>
+    <title>LangPort</title>
+	</head>
+  	<body>
+  	<header>
+	<div class="nav_box">
+		<div class="col-log-10 col-lg-offset-1">
+			<div class="nav_left_box">
+				<nav class="clearfix">
+					<div class="nav_list_item_left">
+						<%= link_to "Find student", students_path %>
+						<%= link_to "Find teacher", teachers_path %>
+					</div>
+				</nav>
+			</div>
+			<div class="about_logo_box">
+				<%= image_tag("logo_black.png", :class => 'about_logo') %>
+			</div>
+			<div class="nav_right_box">
+				<nav class="clearfix">
+					<% if user_signed_in? %>
+						<%= link_to destroy_user_session_path, method: :delete do %>
+							<div class="nav_list_item_right">Log out</div>
+						<% end %>
+					<% else %>
+					<a href="user_show.html"><div class="nav_list_item_right">Log in</div></a>
+					<a href="user_show.html"><div class="nav_list_item_right">Sign up</div></a>
+					<% end %>
+				</nav>
+			</div>
+		</div>
+	  </div>
+	</header>
+    	<%= yield %>
+  	</body>
+</html>

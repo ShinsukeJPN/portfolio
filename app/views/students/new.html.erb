@@ -1,0 +1,33 @@
+<%= render 'shared/category', user: @user, student: @student %>
+	<div class="col-lg-8">
+		<div class="user_info">
+			<div class="user_info_text">
+				<h3>生徒情報登録</h3>
+					<div class="container">
+						<div class="row">
+   				    		<%= form_for(@student, url: user_students_path) do |f| %>
+						      <div class="col-sm-3">
+						        <div class="form-group">
+						   		    <label class="control-label">母国語</label><br>
+						            <label class="control-label">予算</label><br>
+					            	<label class="control-label">メッセージ</label><br>
+					            </div>
+					          </div>
+				              <div class="col-xs-9">
+						        <div class="form-group">
+						        	<%= f.text_field :first_language %><br>
+						        	<%= f.select :budget, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000" } %><br>
+						    		<%= f.text_area :message %><br>
+						        	<%= f.hidden_field :user_id, :value => current_user.id %>
+						            <%= f.submit "送信" %><br>
+						    		<% end %>
+				        	    </div>
+				              </div>
+
+				      </div>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- 部分テンプレート閉じタグ -->
+</div>

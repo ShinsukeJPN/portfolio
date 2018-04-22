@@ -1,0 +1,114 @@
+<%= render 'shared/category' %>
+	<div class="col-lg-8">
+    <h2 class="request_text">メッセージリクエスト</h2>
+		<ul class="nav nav-tabs">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">届いたリクエスト <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#menu1_1" data-toggle="tab">先生になってくれませんか？</a></li>
+						<li><a href="#menu1_2" data-toggle="tab">生徒になりませんか？</a></li>
+					</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">承認したリクエスト<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#menu2_1" data-toggle="tab">承認した生徒</a></li>
+						<li><a href="#menu2_2" data-toggle="tab">承認した先生</a></li>
+					</ul>
+			</li>
+		  		<li><a data-toggle="tab" href="#menu3">拒否したリクエスト</a></li>
+		</ul>
+			 <div class="tab-content">
+			    <div id="menu1_1" class="tab-pane fade in active">
+      				<h3>先生になってくれませんか？</h3>
+					<% requests = @got.where(status: 0) %>
+					  <% requests.each do |request| %>
+	      				<div class="col-lg-6">
+					      		<div class="request_box">
+						      	<div class=request_img %>
+						      			<%= attachment_image_tag request.student.user,:image %>
+						      	</div>
+						      			<%= request.student.user.nickname %>さんからのメッセージリクエスト<br>
+							      		<%= link_to "ユーザ情報", student_path(request.student_id), class:"btn btn-default" %>
+							      		<%= form_for(request, url:request_path(request.id)) do |r| %>
+			 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
+			 									<%= r.submit "ステータスを更新", class: "btn btn-default" %>
+			 							<% end %>
+		              		</div>
+		              	</div>
+		              <% end %>
+	            </div>
+			    <div id="menu1_2" class="tab-pane">
+      				<h3>生徒になりませんか？</h3>
+					<% requests = @got.where(status: 0) %>
+					  <% requests.each do |request| %>
+	      				<div class="col-lg-6">
+					      		<div class="request_box">
+						      	<div class=request_img %>
+						      			<%= attachment_image_tag request.teacher.user,:image %>
+						      	</div>
+						      			<%= request.teacher.user.nickname %>さんからのメッセージリクエスト<br>
+							      		<%= link_to "ユーザ情報", teacher_path(request.teacher_id), class:"btn btn-default" %>
+							      		<%= form_for(request, url:request_path(request.id)) do |r| %>
+			 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
+			 									<%= r.submit "ステータスを更新", class: "btn btn-default" %>
+			 							<% end %>
+			 					</div>
+			 			</div>
+			 		  <% end %>
+			 	</div>
+              	<div id="menu2_1" class="tab-pane fade">
+      				<h3>承認した生徒</h3>
+				      <% requests = @got.where(status: 1) %>
+				      	<% requests.each do |request| %>
+						<div class="col-lg-6">
+							<div class="request_box">
+					      		<div class="request_img"%>
+					      			<%= attachment_image_tag request.student.user,:image %>
+						      	</div>
+					      		<%= request.student.user.nickname %>さんからのリクエスト<br>
+					      		<%= form_for(@room, url:user_rooms_path(current_user.id), method: :post) do |f| %>
+					      			<%= f.hidden_field :send_user_id, :value => current_user.id %>
+					      			<%= f.hidden_field :receiver_user_id, :value => request.student.user.id %>
+					      			<%= f.hidden_field :teacher_id, :value => current_user.id %>
+					      			<%= f.hidden_field :student_id, :value => request.student.id %>
+					      			<%= f.submit "メッセージルームを作成" ,class:"btn btn-default" %>
+					      		<% end %>
+	              			</div>
+              			</div>
+              			<% end %>
+              	</div>
+              	<div id="menu2_2" class="tab-pane fade">
+      				<h3>承認した先生</h3>
+				      <% requests = @got.where(status: 1) %>
+				      	<% requests.each do |request| %>
+						<div class="col-lg-6">
+							<div class="request_box">
+					      		<div class="request_img"%>
+					      			<%= attachment_image_tag request.teacher.user,:image %>
+						      	</div>
+					      		<%= request.teacher.user.nickname %>さんからのリクエスト<br>
+					      		<%= form_for(@room, url:user_rooms_path(current_user.id), method: :post) do |f| %>
+					      			<%= f.hidden_field :send_user_id, :value => current_user.id %>
+					      			<%= f.hidden_field :receiver_user_id, :value => request.teacher.user.id %>
+					      			<%= f.hidden_field :teacher_id, :value => request.teacher.id %>
+					      			<%= f.hidden_field :student_id, :value => current_user.id %>
+					      			<%= f.submit "メッセージルームを作成" ,class:"btn btn-default" %>
+					      		<% end %>
+	              			</div>
+              			</div>
+              			<% end %>
+              	</div>
+              	<div id="menu3" class="tab-pane fade">
+      				<h3>拒否したリクエスト</h3>
+				      	<% requests = @got.where(status: 2)  %>
+				      		<% requests.each do |request| %>
+				      			<%= request.student.user.nickname %>さんからのリクエスト
+				      				<%= link_to "削除", request_path(request), method: :delete, class:"btn btn-default" %>
+				      			<% form_for(request) do |r| %>
+ 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-info dropdown-toggle"} %>
+              						<%= r.submit "ステータスを更新", class: "btn btn-primary" %>
+              					<% end %>
+              			<% end %>
+              	</div>
+            </div>

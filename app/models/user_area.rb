@@ -1,0 +1,2 @@
+class UserArea < ApplicationRecord
+end

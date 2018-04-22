@@ -1,0 +1,473 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+table {
+	border-collapse: collapse;
+}
+
+tr {
+	border-bottom:1px dashed #ccc;
+}
+
+/*top*/
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.header_box {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
+}
+
+.top_image_box {
+	/*margin-top: 100px;
+	margin-left: 100px;*/
+	width: 100%;
+	height: 800px;
+}
+
+.top_image {
+	background-position: top center;
+	background-image: url(top_image.jpg);
+	background-size: cover;
+	background-position: fixed;
+	width: 100%;
+	height: 600px;
+	margin-top: 100px;
+	opacity: 0.6;
+/*	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%);
+*/}
+
+.logo_box {
+	width: 100%;
+}
+
+.top_logo {
+	display: block;
+	margin: 0 auto;
+}
+
+.top_text {
+	width:100%;
+	text-align: center;
+	font-size: 20px;
+}
+
+.buttons {
+	text-align: center;
+}
+
+.btn-default {
+	margin-top: 5px;
+    border-radius: 0;
+    background-color: black;
+    color: #fff;
+    font-family: 'Avenir', serif;
+}
+
+.btn-black {
+	margin-top: 5px;
+    border-radius: 0;
+    background-color: #F5A9BC;
+    color: black;
+    font-family: 'Avenir', serif;
+}
+
+.log_in {
+	font-size: 30px;
+}
+
+.sign_up {
+	font-size: 30px;
+	margin-top: 3px;
+}
+
+.about {
+	margin-top: 100px;
+}
+
+.triangle_animation {
+  animation: Triangle_animation1 0.5s infinite;
+}
+
+@keyframes Triangle_animation1{
+  50%{
+    opacity: 0;
+  }
+}
+
+/*サインアップ画面*/
+.top_box {
+	width:300px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: gray;
+	border-radius: 30px;
+}
+
+/*about*/
+
+header {
+	width: 100%;
+	float: left;
+}
+
+.nav_box {
+	width:100%;
+	background-color: #C2E5FF;
+	float: left;
+}
+.nav_left_box {
+	float: left;
+	width: 30%;
+}
+
+.nav_list_item_left {
+	float: left;
+	padding: 55px 0 0 30px;
+	font-size: 20px;
+}
+
+.about_logo_box {
+	float: left;
+	width: 30%;
+}
+
+.about_logo {
+	display: block;
+	margin: 0 auto;
+}
+
+.nav_right_box {
+	float: left;
+	width: 30%;
+}
+
+.nav_list_item_right {
+	float: right;
+	padding: 55px 30px 0 20px;
+	font-size: 20px;
+}
+
+.about_image {
+	background-image: url(about_image.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 600px;
+}
+
+.subtitle_box {
+	height: 300px;
+	opacity: 0.6;
+	background-color: #FFECE9;
+}
+
+.about_subtitle {
+	padding-top: 50px;
+	font-size: 30px;
+	text-align: center;
+	border-bottom: solid 1px;
+}
+
+.about_text {
+	text-align: center;
+	font-size: 15px;
+	margin-top: 100px;
+}
+
+.rules_animation {
+	padding-top: 50px;
+	text-align: center;
+	font-size: 25px;
+	animation: Rules_animation1 1s infinite;
+}
+
+@keyframes Rules_animation1 {
+	50%{
+		color: #F7819F;
+	}
+}
+
+
+.search_box {
+	width: 100%;
+	height: 100%;
+    background-color:  #C2E5FF;
+    border: 2px dashed #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 0 4px  #C2E5FF;
+    color: #1B1C80;
+    margin: 2em 0;
+    padding: 2em;
+}
+
+.search_text {
+	text-align: center;
+}
+
+caption {
+	text-align: center;
+}
+
+.index_img img {
+	border-radius: 50%;
+	width: 130px;
+	height: 130px;
+	float: left;
+}
+
+.index_img:nth-child(3n+2) {
+	margin-right: 30px;
+	margin:left: 30px;
+	width: 200px;
+	height: 2
+}
+
+.index_img:nth-child(n + 3){
+	margin-top: 20px;
+}
+
+.index_img:hover {
+}
+
+.index_box {
+	width: 420px;
+	height: 150px;
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+.user_info {
+	text-align: center;
+}
+
+.user_info_text {
+	margin: 30px 0 30px 0;
+}
+
+.user_img img {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin: 0 auto;
+}
+
+.table {
+	border: 2px;
+}
+
+.student_info {
+	text-align: center;
+}
+
+.student_info_text {
+	margin: 30px 0 30px 0;
+}
+
+.teacher_info {
+	text-align: center;
+}
+
+.teacher_info_text {
+	margin: 30px 0 30px 0;
+}
+
+.reservation {
+	padding-top: 50px;
+}
+.calender {
+	width: 100%;
+	height: 700px;
+}
+
+.category-box {
+	padding: 50px 0 0 50px;
+}
+
+.request_text {
+	text-align: center;
+}
+
+.rules_background {
+	width: 100%;
+	background-image: url(rules_background.png);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: top center;
+	opacity: 0.5;
+}
+
+.rules_headline {
+	padding-top: 100px;
+}
+
+.headline_text {
+	background-color: #C2E5FF;
+
+}
+
+.rules_texts {
+	text-align: center;
+}
+
+.rules_text:nth-child(n + 2) {
+	padding-top: 30px;
+}
+
+.rules_headline {
+	border-bottom : 10px;
+}
+
+.rules_image1 {
+	padding-top: 100px;
+}
+
+.rules_image2 {
+	padding-top: 100px;
+}
+
+.rules_image4 {
+	padding-top: 100px;
+}
+
+.rules_image5 {
+	padding-top: 100px;
+}
+
+.rules_image1 {
+	padding-top: 100px;
+}
+
+.rules_image1 {
+	padding-top: 100px;
+}
+
+.rules_image1 {
+	padding-top: 100px;
+}
+
+.balloon-right {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 15px 1.5em 0;
+	padding: 7px 10px;
+	min-width: 120px;
+ 	max-width: 100%;
+ 	color: #555;
+	font-size: 16px;
+	background: #blue;
+ 	border: solid 3px #555;
+ 	box-sizing: border-box;
+}
+
+.balloon-right:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-left: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-right:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-left: 14px solid #555;
+ 	z-index: 1;
+}
+
+.balloon-left {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 0 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+ 	max-width: 100%;
+ 	color: #555;
+	font-size: 16px;
+	background: #FFF;
+ 	border: solid 3px #555;
+ 	box-sizing: border-box;
+}
+
+
+.balloon-left:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-right: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-left:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-right: 14px solid #555;
+ 	z-index: 1;
+}
+
+.balloon-left p {
+	margin: 0;
+	padding: 0;
+}
+
+.request_img img {
+	border-radius: 10%;
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+
+.request_box {
+	width: 420px;
+	height: 170px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+
+.request_send_box {
+	width: 420px;
+	height: 170px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+.request_box:nth-child(even) {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}

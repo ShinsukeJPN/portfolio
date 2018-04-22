@@ -1,0 +1,2 @@
+class LanguageTeacher < ApplicationRecord
+end

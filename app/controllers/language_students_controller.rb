@@ -1,0 +1,2 @@
+class LanguageStudentsController < ApplicationController
+end
