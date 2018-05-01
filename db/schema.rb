@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421111959) do
+ActiveRecord::Schema.define(version: 20180428075348) do
 
   create_table "areas", force: :cascade do |t|
-    t.integer "area_name"
+    t.string "area_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "area_name_eng"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180421111959) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reported_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -83,6 +85,8 @@ ActiveRecord::Schema.define(version: 20180421111959) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
+    t.string "detailed_address"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -102,6 +106,7 @@ ActiveRecord::Schema.define(version: 20180421111959) do
     t.string "first_language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "what_to_learn"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -113,6 +118,14 @@ ActiveRecord::Schema.define(version: 20180421111959) do
     t.string "first_language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "detailed_place_1"
+    t.string "detailed_place_2"
+    t.string "detailed_place_3"
+    t.string "need_to_bring"
+    t.string "background"
+    t.string "detailed_address_1"
+    t.string "detailed_address_2"
+    t.string "detailed_address_3"
   end
 
   create_table "user_areas", force: :cascade do |t|

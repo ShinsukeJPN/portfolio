@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bundler', '>= 1.8.4'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
@@ -32,6 +34,11 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
 
 
 group :development, :test do
@@ -65,3 +72,7 @@ gem 'seed-fu'
 gem 'kakurenbo-puti'
 gem 'hirb'
 gem 'hirb-unicode'
+gem 'therubyracer'
+gem 'momentjs-rails'
+gem 'jquery-rails'
+gem 'flatui-rails'

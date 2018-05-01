@@ -2,40 +2,79 @@
 	<div class="col-lg-8">
 		<div class="user_info">
 			<div class="user_info_text">
-				<%# @room.receiver_user_id = params[:user_id] %>
-				<%# @name = @room.receiver_user_id.user.nickname %>
-				<h3>@nameさんとのメッセージ</h3>
-					<%# if @over_ten %>
-						<%#= link_to "メッセージを全て表示", %>
-					<%# end %>
-						<% if @messages.present? %>
-							<% @messages.each do |m| %>
-								<% if m.send_user_id == current_user.id %>
-									<div class="item-right"%>
-										<div class="balloon-right">
-											<%= m.comment %><br>
+				<div class="message_header">
+					<% if @room.teacher.id == current_user.id %>
+						<div class="faceicon">
+							<%= attachment_image_tag @room.student.user,:image %>
+						</div>
+						<div class="header_text">
+							<h2><%= @room.student.user.nickname %>さんとのメッセージ</h2>
+						</div>
+					<% else %>
+						<div class="faceicon">
+							<%= attachment_image_tag @room.teacher.user,:image %>
+						</div>
+						<div class="header_text">
+							<h2><%= @room.teacher.user.nickname %>さんとのメッセージ</h2>
+						</div>
+					<% end %>
+				</div>
+				<div class="message_box">
+						<% if @over_seven %>
+							<%= link_to "メッセージを全て表示", '?m=all'  %>
+						<% end %>
+							<% if @messages.present? %>
+								<% @messages.each do |m| %>
+									<% if m.send_user_id == current_user.id %>
+										<div class="item-right">
+											<div class="balloon-right">
+												<%= simple_format(m.comment) %>
+											</div>
+												<%= m.created_at.strftime('%Y/%m/%d') %>
 										</div>
-											<%= m.created_at.strftime('%Y/%m/%d') %>
-									</div>
-								<% else %>
-									<div class="item-left">
-										<div class="balloon-left">
-											<%= m.comment %>
+									<% else %>
+									<%# params[:user_id] == m.room.receiver_user_id %>
+										<div class="item-left">
+											<div class="balloon-left">
+												<%= simple_format(m.comment) %>
+											</div>
+												<%= m.created_at.strftime('%Y/%m/%d') %>
 										</div>
-											<%= m.created_at %>
-									</div>
+									<% end %>
 								<% end %>
+							<% else %>
+								<p>初めてのメッセージです！</p>
 							<% end %>
-						<% else %>
-							<p>@nameさんとの初めてのメッセージです！</p>
-						<% end %>
-						<%= form_for(@message, url: room_messages_path) do |f| %>
-							<%= f.text_area :comment %>
-							<%= f.hidden_field :send_user_id, :value => current_user.id %>
-							<%= f.hidden_field :room_id, :value => @room.id %>
-							<%= f.submit "送信" %>
-						<% end %>
-			</div>
+							<%= form_for(@message, url: room_messages_path) do |f| %>
+								<%= f.text_area :comment %>
+								<%= f.hidden_field :send_user_id, :value => current_user.id %>
+								<%= f.hidden_field :room_id, :value => @room.id %>
+								<%= f.submit "送信" %>
+							<% end %>
+							<%= link_to "メッセージ一覧に戻る", user_rooms_path(current_user) %>
+								<% if @room.teacher.id == current_user.id %>
+									<div class="reservation_box">
+										<div class="reservation_text">
+											<h4>予約を作成する</h4>
+										</div>
+										<div class="reservation_form">
+											<%= form_for(@reservation, url: user_reservations_path(current_user)) do |f| %>
+							  					<label class="control-label" for="">予約日時</label>
+							  					<%= f.time_select :time, :start_year => Time.now.year, :end_year => Time.now.year + 2, :minute_step	=> 30 %>
+							  					<%= f.select(:detailed_place,
+							  						[@room.teacher.detailed_place_1,
+							  						 @room.teacher.detailed_place_2,
+							  						 @room.teacher.detailed_place_3])
+							  					%><br>
+							  					<%= f.hidden_field :student_id, :value => @room.student.id %>
+							  					<%= f.hidden_field :teacher_id, :value => current_user.id %>
+							  					<%= f.hidden_field :status, :value => "予定" %>
+								  				<%= f.submit "Make a reservation!" %>
+							  				<% end %>
+							  			</div>
+							  		</div>
+						  		<% end %>
+				</div>
 		</div>
 	</div>
 <!-- 部分テンプレート閉じタグ -->

@@ -1,7 +1,13 @@
 class StudentsController < ApplicationController
+	before_action :authenticate_user!, except: [:index]
 	def new
-		@user = current_user
-		@student = Student.new
+		@user = User.find(params[:user_id])
+		if (@user.nickname) && (@user.image).presents?
+			@student = Student.new
+			@teacher.language_students.build
+		else
+			redirect_to edit_user_path(current_user), flash: {notice: "すべてのユーザ情報を登録してください"}
+		end
 	end
 
 	def create
@@ -12,13 +18,16 @@ class StudentsController < ApplicationController
 	end
 
 	def index
-		@request = Request.new
-		@students = Student.all
+		@request_s = Request.new
+		@students = Student.where.not(id: current_user)
 	end
 
 	def show
-		@student = Student.find(params[:id])
-		@info = @student.first_language || @student.budget
+		@user = current_user
+		if Student.exists?(id: params[:id])
+			@student = Student.find(params[:id])
+			@info = @student.first_language || @student.budget
+		end
 		# binding.pry
 		# || @student.message
 	end

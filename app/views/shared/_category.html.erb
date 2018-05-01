@@ -1,17 +1,28 @@
 <div class="container-fluid">
     <div class="col-lg-2">
     	<div class="side-bar">
-    	 	<div class="category-box">
-		    	<h4>Welcome!</h4>
-		    	<h2>Menu</h2>
-		    	<ol>
-			    	<li><%= link_to "ユーザ情報", user_path(current_user) %>
-			    	<li><%= link_to "生徒情報", student_path(current_user) %></li>
-			    	<li><%= link_to "先生情報", teacher_path(current_user) %></li>
-			    	<li><a href="reservations_index.html" >予約作成・予約一覧</a></li>
-			    	<li><%= link_to "メッセージリクエスト一覧", user_requests_path(current_user) %></li>
-			    	<li><%= link_to "メッセージ一覧", user_rooms_path(current_user) %></li>
-			    </ol>
+    	 	<div class="category_box">
+		    	<h4 style="padding-left:26px;">Menu</h4>
+		    	<ul class="category">
+			    	<li class="category_list">
+			    		<%= link_to "ユーザ情報", user_path(current_user) %>
+			    	</li>
+			    	<li class="category_list">
+			    		<%= link_to "生徒情報", student_path(current_user) %>
+			   		</li>
+			    	<li class="category_list">
+			    		<%= link_to "先生情報", teacher_path(current_user) %>
+			    	</li>
+			    	<li class="category_list">
+			    		<%= link_to "予約一覧", user_reservations_path(current_user) %>
+			    	</li>
+			    	<li class="category_list">
+			    		<%= link_to "メッセージ一覧", user_rooms_path(current_user) %>
+			    	</li>
+			    	<li class="category_list">
+			    		<%= link_to "メッセージリクエスト一覧", user_requests_path(current_user) %>
+			    	</li>
+			    </ul>
 	    	</div>
 		</div>
 	</div>

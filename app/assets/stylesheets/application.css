@@ -10,9 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require flat-ui
  *= require_tree .
  *= require_self
  */
+
+.top_top  {font-family: 'Comic Sans MS';}
+.top_middle {font-family: 'Comic Sans MS';}
+
 
 table {
 	border-collapse: collapse;
@@ -20,6 +25,28 @@ table {
 
 tr {
 	border-bottom:1px dashed #ccc;
+}
+
+h2{
+position: relative;
+display: inline-block;
+margin-bottom: 1em;
+}
+
+h2:before {
+content: '';
+position: absolute;
+bottom: -15px;
+display: inline-block;
+width: 60px;
+height: 5px;
+left: 50%;
+-moz-transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+transform: translateX(-50%);
+background-color: black;
+border-radius: 2px;
 }
 
 /*top*/
@@ -39,7 +66,7 @@ tr {
 	/*margin-top: 100px;
 	margin-left: 100px;*/
 	width: 100%;
-	height: 800px;
+	height: 820px;
 }
 
 .top_image {
@@ -47,27 +74,147 @@ tr {
 	background-image: url(top_image.jpg);
 	background-size: cover;
 	background-position: fixed;
+	position: relative;
 	width: 100%;
-	height: 600px;
-	margin-top: 100px;
-	opacity: 0.6;
+	height: 820px;
+	margin-top: -20px;
+	opacity: 0.8;
 /*	-webkit-filter: grayscale(100%);
   	filter: grayscale(100%);
 */}
+
 
 .logo_box {
 	width: 100%;
 }
 
-.top_logo {
-	display: block;
-	margin: 0 auto;
+.top_header {
+	width: 100%;
+	background-color: rgba(0,43,92,.8);
 }
 
-.top_text {
+.top_logo_box {
+	width: 80px;
+	height: 100px;
+	margin-left: 20px;
+	color: white;
+}
+
+.top_logo {
+	height: 80px;
+	display: block;
+	color: white;
+}
+
+.top_top {
+	width: 100%;
+	height: 470px;
+}
+
+.top_box_1 {
+	width: 260px;
+	height: 260px;
+	background-color: transparent;
+	float: left;
+	margin: 50px 0 0 50px;
+	border: 2px solid black;
+}
+
+.top_box_1:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_box_2 {
+	width: 260px;
+	height: 260px;
+	background-color: transparent;
+	float: left;
+	margin: 50px 0 0 50px;
+	border: 3px solid black;
+}
+
+.top_box_2:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_middle {
+	width: 100%;
+}
+
+.top_box_3 {
+	width: 260px;
+	height: 260px;
+	background-color: transparent;
+	float: left;
+	margin-left: 50px;
+	border: 3px solid black;
+}
+
+.top_box_3:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_box_4 {
+	width: 260px;
+	height: 260px;
+	background-color: transparent;
+	float: left;
+	margin-left: 50px;
+	border: 2px solid black;
+}
+
+.top_box_4:hover {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.top_text_1 {
 	width:100%;
 	text-align: center;
-	font-size: 20px;
+	margin-top: 80px;
+	font-size: 50px;
+	color: white;
+}
+
+.top_text_2 {
+	width:100%;
+	text-align: center;
+	margin-top: 50px;
+	font-size: 50px;
+	color: white;
+}
+
+.top_text_2:hover {
+}
+
+.top_text_3 {
+	width:100%;
+	text-align: center;
+	margin-top: 80px;
+	font-size: 50px;
+	color: white;
+}
+
+.top_text_4 {
+	width:100%;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 80px;
+	color: white;
+}
+
+.session_box {
+	width: 400px;
+	margin: 200px 0 0 200px;
+	background-color: white;
+	opacity: 0.8;
+	text-align: center;
 }
 
 .buttons {
@@ -75,18 +222,18 @@ tr {
 }
 
 .btn-default {
-	margin-top: 5px;
+	margin-top: 2px;
     border-radius: 0;
-    background-color: black;
-    color: #fff;
+    background-color: #CCC;
+    color: black;
     font-family: 'Avenir', serif;
 }
 
 .btn-black {
 	margin-top: 5px;
     border-radius: 0;
-    background-color: #F5A9BC;
-    color: black;
+    background-color: #AD002D;
+    color: white;
     font-family: 'Avenir', serif;
 }
 
@@ -115,11 +262,16 @@ tr {
 
 /*サインアップ画面*/
 .top_box {
-	width:300px;
+	width: 300px;
 	text-align: center;
 	margin: 0 auto;
 	background-color: gray;
 	border-radius: 30px;
+}
+
+.flash_message {
+	text-align: center;
+	color: #D53E62;
 }
 
 /*about*/
@@ -129,25 +281,24 @@ header {
 	float: left;
 }
 
-.nav_box {
-	width:100%;
-	background-color: #C2E5FF;
-	float: left;
-}
-.nav_left_box {
-	float: left;
-	width: 30%;
+.container-fluid {
+	margin-top: 120px;
 }
 
-.nav_list_item_left {
+.nav_box {
+	width:100%;
 	float: left;
-	padding: 55px 0 0 30px;
-	font-size: 20px;
+	border-top: 2px dotted #CCC;
+	border-bottom: 2px dotted #CCC;
+	background-color: white;
+	z-index: 9999;
+	position: fixed;
+	margin-top: -15px;
 }
 
 .about_logo_box {
 	float: left;
-	width: 30%;
+	margin-left: 39px;
 }
 
 .about_logo {
@@ -227,9 +378,8 @@ caption {
 }
 
 .index_img img {
-	border-radius: 50%;
-	width: 130px;
-	height: 130px;
+	width: 250px;
+	height: 250px;
 	float: left;
 }
 
@@ -245,14 +395,18 @@ caption {
 }
 
 .index_img:hover {
+    transition:all 0.5s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
 }
 
 .index_box {
-	width: 420px;
-	height: 150px;
+	width: 290px;
+	height: 400px;
 	padding: 0.5em 1em;
     margin: 2em 0;
-    border: double 5px #F5A9BC;
+    border: double 5px #4ec4d3;
 }
 
 .user_info {
@@ -264,11 +418,11 @@ caption {
 }
 
 .user_img img {
-	border-radius: 50%;
-	width: 200px;
-	height: 200px;
+	width: 330px;
+	height: 330px;
 	display: block;
-	margin: 0 auto;
+	margin: 2px auto;
+	border: 6px solid #CCC;
 }
 
 .table {
@@ -277,30 +431,112 @@ caption {
 
 .student_info {
 	text-align: center;
+	border-bottom: 1px solid #CCC;
 }
 
 .student_info_text {
 	margin: 30px 0 30px 0;
+	text-align: center;
 }
 
 .teacher_info {
 	text-align: center;
+	border-bottom: 1px solid #CCC;
 }
 
 .teacher_info_text {
 	margin: 30px 0 30px 0;
 }
 
+.t-header {
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-background {
+	width: 100%;
+	height: 270px;
+	margin-top: 100px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-bring {
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-place-1 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-place-2 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-place-3 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+}
+
+.s-header {
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+}
+
+.area_box {
+	width: 300px;
+	height: 40px;
+	background-color: #CCC;
+	border-radius: 50px;
+	position: inline-block;
+	margin: 0 auto;
+}
+
+.s-message {
+	width: 100%;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+
+.s-what_to_learn {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+}
+
+.icon-color {
+	color: #AD002D;
+}
+
 .reservation {
 	padding-top: 50px;
 }
-.calender {
-	width: 100%;
-	height: 700px;
+
+.reservation_box {
+	width: 400px;
+	height: 400px;
+	margin: 0 auto ;
 }
 
-.category-box {
-	padding: 50px 0 0 50px;
+.category_box {
+    padding: 20px 15px;
+    margin: 30px 0;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;/*点線*/
+}
+
+ul.category {
+  color: #1e366a;
+  border-top: solid #1e366a 1px;/*上のボーダー*/
+  border-bottom: solid #1e366a 1px;/*下のボーダー*/
+  padding: 0.5em 0 0.5em 1.5em;
+}
+
+li.category_list {
+  line-height: 1.5;
+  padding: 0.5em 0;
 }
 
 .request_text {
@@ -309,28 +545,31 @@ caption {
 
 .rules_background {
 	width: 100%;
+	height: 3000px;
 	background-image: url(rules_background.png);
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: top center;
-	opacity: 0.5;
 }
 
 .rules_headline {
-	padding-top: 100px;
-}
-
-.headline_text {
-	background-color: #C2E5FF;
-
+	text-align: center;
+	margin: 0 auto;
+	width: 200px;
+	height: 100px;
+	background: rgba(255,255,255,.5);
 }
 
 .rules_texts {
 	text-align: center;
 }
 
-.rules_text:nth-child(n + 2) {
-	padding-top: 30px;
+.rules_text {
+	margin: 0 auto;
+	width: 400px;
+	padding: 30px 0 30px 0;
+	background: rgba(255,255,255,.5);
+	border-radius: 20px;
 }
 
 .rules_headline {
@@ -365,17 +604,34 @@ caption {
 	padding-top: 100px;
 }
 
+.room_box {
+	width: 100%;
+	height: 155px;
+	margin-top: 15px;
+	border: solid 3px #CECEF6;
+	border-radius: 5px;
+	background-color: #ffeeee;
+}
+
+.message_comment {
+	color: gray;
+	font-size: 13px;
+}
+
+.room_text {
+	padding-top: 50px;
+}
+
 .balloon-right {
  	position: relative;
 	display: inline-block;
- 	margin: 1.5em 15px 1.5em 0;
-	padding: 7px 10px;
-	min-width: 120px;
- 	max-width: 100%;
- 	color: #555;
-	font-size: 16px;
-	background: #blue;
- 	border: solid 3px #555;
+ 	margin: 5px 10px 5px 0;
+	padding: 3px 4px;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #CCC;
  	box-sizing: border-box;
 }
 
@@ -397,24 +653,38 @@ caption {
 	right: -30px;
  	margin-top: -14px;
 	border: 14px solid transparent;
-	border-left: 14px solid #555;
+	border-left: 14px solid #CCC;
  	z-index: 1;
+}
+
+.message_header {
+	width: 100%;
+	text-align: center;
+}
+
+.faceicon img{
+	margin-top: -20px;
+    width: 80px;
+    height: auto;
+    border: solid 3px #d7ebfe;
+    border-radius: 50%;
+}
+
+.header_text {
+	width: 100%;
 }
 
 .balloon-left {
  	position: relative;
 	display: inline-block;
  	margin: 1.5em 0 1.5em 15px;
-	padding: 7px 10px;
-	min-width: 120px;
- 	max-width: 100%;
- 	color: #555;
-	font-size: 16px;
-	background: #FFF;
- 	border: solid 3px #555;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #F6CED8;
  	box-sizing: border-box;
 }
-
 
 .balloon-left:before{
 	content: "";
@@ -434,17 +704,12 @@ caption {
 	left: -30px;
  	margin-top: -14px;
 	border: 14px solid transparent;
-	border-right: 14px solid #555;
+	border-right: 14px solid #F6CED8;
  	z-index: 1;
 }
 
-.balloon-left p {
-	margin: 0;
-	padding: 0;
-}
-
 .request_img img {
-	border-radius: 10%;
+	margin: 0 13px 0 0;
 	width: 150px;
 	height: 150px;
 	float: left;
@@ -452,7 +717,7 @@ caption {
 
 .request_box {
 	width: 420px;
-	height: 170px;
+	height: 180px;
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px #4ec4d3;
@@ -470,4 +735,50 @@ caption {
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px #F5A9BC;
+}
+
+.index_reservation_box {
+	width:600px;
+	margin: 0 auto;
+}
+
+ul.reservation {
+  padding: 0;
+}
+
+ul.reservation {
+  color: #404040;
+  border-left: solid 6px #1fa67a;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: whitesmoke;
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+  font-weight: bold;
+}
+
+
+li.reservation {
+  color: #404040;
+  border-left: solid 6px #1fa67a;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: whitesmoke;
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+  font-weight: bold;
+}
+
+
+li.reservation_top {
+  color: white;
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: rgba(0,0,0,.5);
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+  font-weight: bold;
 }

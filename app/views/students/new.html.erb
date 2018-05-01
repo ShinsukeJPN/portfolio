@@ -1,8 +1,13 @@
 <%= render 'shared/category', user: @user, student: @student %>
-	<div class="col-lg-8">
+<div class="col-lg-8">
+  <% if flash[:notice] %>
+    <div class="flash_message">
+    	<%= flash[:notice] %>
+    </div>
+  <% end %>
 		<div class="user_info">
 			<div class="user_info_text">
-				<h3>生徒情報登録</h3>
+				<h2>生徒情報登録</h2>
 					<div class="container">
 						<div class="row">
    				    		<%= form_for(@student, url: user_students_path) do |f| %>

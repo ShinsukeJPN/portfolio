@@ -1,48 +1,79 @@
-<%= render 'shared/category', user: @user, student: @student %>
-<div class="col-lg-8">
-	<% if @info.present? %>
-	<div class="user_info">
-		<div class="user_info_text">
-		<h3><%= @teacher.user.nickname %>さんの先生情報</h3>
+<%= render 'shared/category' %>
+<div class="col-lg-10">
+	<% if Teacher.exists?(id: params[:id]) %>
+	<div class="teacher_info">
+		<div class="teacher_info_text">
+		<h2><i class="fa fa-address-card icon-color"></i><%= @teacher.user.nickname %>さんの先生情報</h2>
 		</div>
 		<div class="col-lg-5">
 			<div class="user_img">
 				<%= attachment_image_tag @teacher.user,:image %>
-			</div>
-		</div>
-		<div class="col-lg-7">
-			<table class="table table-striped">
-			    <thead>
-			      <tr>
-			        <td><h6>値段</h6></td>
-			        <td><%= @teacher.budget %>/ 1時間</td>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr>
-			        <td>母国語</td>
-			        <td><%= @teacher.first_language  %>
-			      </tr>
-			      <tr>
-			      	<td>日本語レベル</td>
-			      	<td><%= @teacher.japanese_level %></td>
-			      </tr>
-			      <tr>
-			        <td>メッセージ</td>
-			        <td><%= @teacher.message %></td>
-			      </tr>
-			    </tbody>
-			 </table>
 				<%= link_to edit_teacher_path(current_user) do %>
 					<div class="btn btn-black">編集</div>
 				<% end %>
+			</div>
+		</div>
+		<div class="col-lg-7">
+			<div class="t-header">
+				<% @teacher.user.user_areas.each do |t| %>
+					<h5>
+						<div class="area_box clearfix" %>
+						<%= t.area.area_name %><br>
+						<%= t.area.area_name_eng %>
+						</div>
+					</h5>
+				<% end %>
+				<div class="col-lg-4">
+			        <h3><i class="fa fa-book icon-color"></i>言語</h3>
+			        <h5>
+			        	<%# @teacher.language_teachers.each do |lt| %>
+			        	<%#= lt.language.language_name %>
+			        	<%# end %>
+			        </h5>
+			     </div>
+			     <div class="col-lg-4">
+			        <h3><i class="fa fa-eye icon-color"></i>値段</h3>
+			        <h5><%= @teacher.budget %></h5>
+			     </div>
+			     <div class="col-lg-4">
+			     	<h3><i class="fa fa-comment icon-color"></i>母国語</h3>
+			     	<h5><%= @teacher.first_language %></h5>
+			     </div>
+			</div>
+			<div class="t-background">
+					<h3>メッセージ・経歴</h3>
+					<h5><%= @teacher.message %></h5><br>
+			      	<h5><%= @teacher.background %></h5>
+			</div>
+			<div class="t-bring">
+			      	<h3>持ち物</h3>
+			      	<h5><%= @teacher.need_to_bring %></h5>
+			</div>
+			<div class="t-places">
+				<div class="t-place-1">
+			        <h3><i class="fa fa-building icon-color"></i>場所 1</h3>
+			        <h5><%= @teacher.detailed_place_1 %><h5><br>
+			        <h5><%= @teacher.detailed_address_1 %></h5>
+			    </div>
+				<div class="t-place-2">
+			      	<h3><i class="fa fa-building icon-color"></i>場所 2</h3>
+			        <h5><%= @teacher.detailed_place_2 %></h5><br>
+			        <h5><%= @teacher.detailed_address_2 %></h5>
+			    </div>
+			    <div class="t-place-3">
+			      	<h3><i class="fa fa-building icon-color"></i>場所 3</h3>
+			        <h5><%= @teacher.detailed_place_3 %></h5><br>
+			        <h5><%= @teacher.detailed_address_3 %></h5></td>
+			    </div>
+			</div>
+		</div>
 		</div>
 	<% else %>
 		<div class="user_info">
 		<div class="user_info_text">
-			登録された生徒情報がありません。
-			<%= link_to new_user_student_path(current_user) do %>
-			<p>生徒情報登録</p>
+			登録された先生情報がありません。
+			<%= link_to new_user_teacher_path(current_user) do %>
+			<p>先生情報登録</p>
 			<% end %>
 		</div>
 		</div>

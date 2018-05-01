@@ -1,24 +1,31 @@
 class TeachersController < ApplicationController
+	before_action :authenticate_user!, except: [:index]
 	def new
-		@teacher = Teacher.new
+		@user = User.find(params[:user_id])
+		if (@user.nickname) && (@user.image).presents?
+			@teacher = Teacher.new
+			@teacher.language_teachers.build
+		else
+			redirect_to edit_user_path(current_user), flash: {notice: "すべてのユーザ情報を登録してください"}
+		end
 	end
 
 	def index
-		@request = Request.new
-		@teachers = Teacher.all
+		@request_t = Request.new
+		@teachers = Teacher.where.not(id: current_user)
 	end
 
 	def create
 		@user = current_user
 		@teacher = Teacher.new(teacher_params)
 		@teacher.save
-		redirect_to teacher_path(@teacher)
+		redirect_to teacher_path(current_user)
 	end
 
 	def show
-		@user = current_user
-		@teacher = Teacher.find(params[:id])
-		@info = @teacher.budget || @teacher.japanese_level
+		if Teacher.exists?(id: params[:id])
+			@teacher = Teacher.find(params[:id])
+		end
 	end
 
 	def edit
@@ -35,7 +42,8 @@ class TeachersController < ApplicationController
 	private
 
 	def teacher_params
-		params.require(:teacher).permit(:user_id, :budget, :japanese_level, :first_language, :message)
+		params.require(:teacher).permit(:user_id, :budget, :japanese_level, :first_language, :message,
+										language_teachers_attributes: [:id, :language_level, :language_id])
 	end
 
 end

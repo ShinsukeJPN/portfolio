@@ -1,14 +1,14 @@
 class RoomsController < ApplicationController
 
 	def index
-		@with_teacher = Room.where(student_id: current_user.id)
-		@with_student = Room.where(teacher_id: current_user.id)
+		@with_teacher = Room.where(student_id: current_user).where.not(teacher_id: current_user)
+		@with_student = Room.where(teacher_id: current_user).where.not(student_id: current_user)
 	end
 
 	def create
 		@room = Room.new(room_params)
 		@room.save
-		redirect_to user_rooms_path(current_user)
+		redirect_to room_messages_path(@room)
 	end
 
 	private
@@ -16,6 +16,3 @@ class RoomsController < ApplicationController
 		params.require(:room).permit(:send_user_id, :receiver_user_id, :teacher_id, :student_id)
 	end
 end
-
-
-

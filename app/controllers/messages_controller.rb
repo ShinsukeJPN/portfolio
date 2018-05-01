@@ -6,9 +6,17 @@ class MessagesController < ApplicationController
   def index
   	@message = Message.new(send_user_id: current_user)
   	@messages = @room.messages
-      # if @messages.count > 10
-      #   @over_ten = true
-      # end
+      if @messages.count > 7
+        @over_seven = true
+        @messages = @messages[-7..-1]
+      end
+
+    if params[:m]
+      @over_seven = false
+      @messages = @room.messages
+    end
+
+    @reservation = Reservation.new
   end
 
   def create
@@ -25,6 +33,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-  	params.require(:message).permit(:user_id, :send_user_id, :receiver_user_id, :comment)
+  	params.require(:message).permit(:user_id, :send_user_id, :comment)
   end
 end

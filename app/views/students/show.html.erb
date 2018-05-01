@@ -1,36 +1,50 @@
 <%= render 'shared/category' %>
-<div class="col-lg-8">
-	<% if @info.present? %>
-	<div class="user_info">
-		<div class="user_info_text">
-		<h3><%= @student.user.nickname %>さんの生徒情報</h3>
-		</div>
-		<div class="col-lg-5">
-			<div class="user_img">
-				<%= attachment_image_tag @student.user,:image %>
+<div class="col-lg-10">
+	<% if Student.exists?(id: params[:id]) %>
+		<div class="student_info">
+			<div class="student_info_text">
+				<h2><i class="fa fa-address-card icon-color"></i><%= @student.user.nickname %>さんの生徒情報</h2>
 			</div>
-		</div>
-		<div class="col-lg-7">
-			<table class="table table-striped">
-			    <thead>
-			      <tr>
-			        <td><h6>予算</h6></td> <td><%= @student.budget %>/ 1時間</td>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr>
-			        <td>母国語</td>
-			        <td><%= @student.first_language %>
-			      </tr>
-			      <tr>
-			        <td>メッセージ</td>
-			        <td><%= @student.message %></td>
-			      </tr>
-			    </tbody>
-			 </table>
-				<%= link_to edit_student_path(current_user) do %>
-					<div class="btn btn-black">編集</div>
-				<% end %>
+			<div class="col-lg-5">
+				<div class="user_img">
+					<%= attachment_image_tag @student.user,:image %>
+					<%= link_to edit_student_path(current_user) do %>
+						<div class="btn btn-black">編集</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="s-header cleafix">
+					<% @student.user.user_areas.each do |s| %>
+						<h5>
+							<div class="area_box">
+								<%= s.area.area_name %><br>
+								<%= s.area.area_name_eng %>
+							</div>
+						</h5>
+					<% end %>
+					<div class="col-lg-4">
+				        <h3><i class="fa fa-book icon-color"></i>言語</h3>
+				        <h5>英語</h5>
+				     </div>
+				     <div class="col-lg-4">
+				        <h3><i class="fa fa-eye icon-color"></i>値段</h3>
+				        <h5><%= @student.budget %></h5>
+				     </div>
+				     <div class="col-lg-4">
+				     	<h3><i class="fa fa-comment icon-color"></i>母国語</h3>
+				     	<h5><%= @student.first_language %></h5>
+				     </div>
+				</div>
+				<div class="s-message clearfix">
+					<h3>メッセージ</h3>
+					<h5><%= @student.message %></h5>
+				</div>
+				<div class="s-what_to_learn">
+					<h3>学びたいこと</h3>
+					<h5><%= @student.what_to_learn %></h5>
+				</div>
+			</div>
 		</div>
 	<% else %>
 		<div class="user_info">

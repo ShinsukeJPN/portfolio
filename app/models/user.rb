@@ -8,6 +8,11 @@ class User < ApplicationRecord
   				      女性: 1}
   has_one :teacher
   has_one :student
-  has_many :rooms, through: :student
-  has_many :rooms, through: :teacher
+  has_many :reservations, through: :students
+  has_many :reservations, through: :teachers
+  has_many :rooms, through: :students
+  has_many :rooms, through: :teachers
+  has_many :areas, through: :user_areas
+  has_many :user_areas, dependent: :destroy
+  accepts_nested_attributes_for :user_areas, allow_destroy: true
 end
