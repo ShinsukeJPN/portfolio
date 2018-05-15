@@ -1,48 +1,152 @@
 <%= render 'shared/category', user: @user, student: @student %>
-	<div class="col-lg-8">
-		<div class="user_info">
-			<div class="user_info_text">
-				<h2>先生情報登録</h2>
-					<div class="container">
-						<div class="row">
-   				    		<%= form_for(@teacher, url: teacher_path) do |f| %>
-						      <div class="col-sm-4">
-						        <div class="form-group", style="margin-left:280px;">
-						   		    <label class="control-label">母国語</label><br>
-						            <label class="control-label">値段</label><br>
-						            <label class="control-label">日本語レベル</label><br>
-					            	<label class="control-label">かんたんな経歴・メッセージなど</label><br>
-					            </div>
-					          </div>
-				              <div class="col-xs-8">
-						        <div class="form-group", style="margin-right:500px;">
-						        	<%= f.fields_for :language_teachers do |lt| %>
-						        		<%= lt.collection_check_boxes(:language_id, Language.all, :id, :language_name, include_hidden: false) do |b| %>
-						        		<%= b.label { b.check_box + b.text } %>
-						        		<% end %>
-						        		<%#= lt.collection_select :language_id, LanguageTeacher.all, :id, :language_level %>
-						        	<% end %>						        	<%= f.text_field :first_language, class: "form-control", placeholder: "母国語" %><br>
-						        	<%= f.select :budget, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000" }, {}, {class: "btn btn-info dropdown-toggle"} %><br>
-						        	<%= f.select :japanese_level,Teacher.japanese_levels.keys, {}, {class: "btn btn-info dropdown-toggle"} %><br>
-						        	<%= f.text_field :need_to_bring, class: "form-control", placeholder: "持ち物" %>
-						    		<%= f.text_area :message, class: "form-control", placeholder: "メッセージ" %><br>
-						    		<%= f.text_area :background, class: "form-control", placeholder: "経歴(Background)など" %><br>
-						    		<%= f.text_field :detailed_place_1, class: "form-control", placeholder: "場所1" %><br>
-						    		<%= f.text_field :detailed_place_2, class: "form-control", placeholder: "場所2" %><br>
-						    		<%= f.text_field :detailed_place_3, class: "form-control", placeholder: "場所3" %><br>
-						    		<%= f.text_area :detailed_address_1, class: "form-control", placeholder: "住所1" %><br>
-						    		<%= f.text_area :detailed_address_2, class: "form-control", placeholder: "住所2" %><br>
-						    		<%= f.text_area :detailed_address_3, class: "form-control", placeholder: "住所3" %><br>
-						        	<%= f.hidden_field :user_id, :value => current_user.id %>
-						            <%= f.submit "送信" %><br>
-						    		<% end %>
-				        	    </div>
-				              </div>
-
-				      </div>
-					</div>
-			</div>
+<div class="col-lg-8">
+	<div class="user_info">
+		<div class="user_info_text">
+			<h2>先生情報更新</h2>
 		</div>
+		<%= form_for(@teacher, url: teacher_path) do |f| %>
+			<div class="container">
+		   				    <div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>教える言語</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+							        		<%= nested_form_for @teacher do |n| %>
+								        		<%= n.fields_for :language_teachers do |lt| %>
+									        		<%= lt.collection_select :language_id, Language.all, :id, :language_name %>
+									         	  	<%= lt.link_to_remove "削除" %>
+									        	<% end %>
+										        <%= n.link_to_add "言語追加", :language_teachers %>
+									        <% end %>
+						    			</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>教えるその他の言語</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+				    						<%= f.text_field :other_language, class: "form-control", placeholder:"例:タガログ、モンゴル", style: "width:300px; margin:0 auto;" %>
+						    			</div>
+				    			</div>
+				    		</div>
+		   				    <div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>母国語</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+				        					<%= f.collection_select(:first_language, Language.all, :language_name, :language_name) %>
+						    			</div>
+				    			</div>
+				    		</div>
+		   				    <div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>値段</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+				  					      	<%= f.select :budget, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000", "3500円" => "3500", "4000円" => "4000", "4500円" => "4500", "5000円" => "5000"} %>
+						    			</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>日本語レベル</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+				       					 	<%= f.select :japanese_level,Teacher.japanese_levels.keys %>
+						    			</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>生徒の持ち物</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+								        	<%= f.text_field :need_to_bring, class: "form-control" %>
+						    			</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>かんたんな経歴・メッセージなど</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+				    						<%= f.text_area :message, class: "form-control", style: "width:300px; margin:0 auto;" %>
+						    			</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所1</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_field :detailed_place_1, class: "form-control", style: "width:300px; margin:0 auto;" %>
+				   				    	</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所1の住所</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_area :detailed_address_1, class: "form-control" %>
+				   				    	</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所2</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_field :detailed_place_2, class: "form-control", style: "width:300px; margin:0 auto;" %>
+				   				    	</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所2の住所</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_area :detailed_address_2, class: "form-control" %>
+				   				    	</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所3</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_field :detailed_place_3, class: "form-control", style: "width:300px; margin:0 auto;" %>
+				   				    	</div>
+				    			</div>
+				    		</div>
+				    		<div class="col-sm-9  col-sm-offset-2">
+						        <div class="form-group">
+			   				    		<div class="col-sm-3">
+				   				    		<label>場所3の住所</label>
+				   				    	</div>
+				   				    	<div class="col-sm-9">
+											<%= f.text_area :detailed_address_3, class: "form-control" %>
+				   				    	</div>
+				    			</div>
+				        	<%= f.hidden_field :user_id, :value => current_user.id %>
+				    		<%= f.submit "送信", class: "btn btn-black" %>
+			          	</div>
+			</div>
+	 	<% end %>
 	</div>
+</div>
 <!-- 部分テンプレート閉じタグ -->
 </div>

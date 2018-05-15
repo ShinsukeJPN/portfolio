@@ -1,0 +1,37 @@
+<%= render 'shared/category' %>
+    <div class="col-lg-8">
+        <table class="table" style="margin-top:50px;">
+            <% if flash[:delreport] %>
+                <div class="flash_message">
+                    <%= flash[:delreport] %>
+                </div>
+            <% end %>
+            <thead>
+                <tr>
+                    <th> 通報された人(id) </th>
+                    <th> 通報した人 </th>
+                    <th> 通報種類 </th>
+                    <th> 通報内容 </th>
+                    <th> 対応したら削除 </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <tr>
+                        <% @reported_user = User.find(report.reported_user_id).nickname %>
+                        <% @user = User.find(report.reported_user_id) %>
+                        <%= link_to user_path(@user) do %>
+                         <td> <%= @reported_user %>(<%= reported_user.id %>) </td>
+                        <% end %>
+                         <td> <%= report.user.nickname %> </td>
+                         <td> <%= report.report_reason %> </td>
+                         <td> <%= report.report_comment %> </td>
+                         <td> <%= link_to "Delete", admin_report_path(report), "data-confirm" => "本当に消しますか？", method: :delete, class:"btn btn-danger" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- 部分テンプレート閉じタグ -->
+</div>

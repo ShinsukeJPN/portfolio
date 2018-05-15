@@ -1,0 +1,42 @@
+<div class="top_image_box">
+	<div class="top_image">
+			<div class="top_logo_box">
+				<%= image_tag("logo_black.png", :class => "top_logo") %>
+			</div>
+				<div class="top_image_text_left">
+					<div class="line1">Welcome administrators!</div>
+					<div class="line2">Keep it up!</div>
+				</div>
+				<div class="top_image_text_right">
+					<div class="top_image_text_1">\ Hello　Admin! /</div>
+				</div>
+		<div class="col-lg-8 col-lg-offset2"%>
+				<div class="top_top">
+					<div class="top_subtitle">
+						<p>アドミン用</p>
+					</div>
+						<div class="top_box_1">
+							<%= link_to new_admin_session_path do %>
+								<div class="top_text_1">
+									Log In
+								</div>
+							<% end %>
+						</div>
+						<div class="top_box_2">
+							<%= link_to new_admin_registration_path do %>
+								<div class="top_text_2">
+									Sign Up
+								</div>
+							<% end %>
+						</div>
+						<div class="top_box_3">
+							<%= link_to root_path do %>
+								<div class="top_text_3">
+									User page
+								</div>
+							<% end %>
+						</div>
+				</div>
+		</div>
+	</div>
+</div>

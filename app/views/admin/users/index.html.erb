@@ -1,0 +1,43 @@
+<%= render 'shared/category' %>
+    <div class="col-lg-8">
+        <div class="user_search_box">
+                <%= search_form_for @q, :url => {:controller => '/admin/users', :action => 'index'} do |f| %>
+                        <%= f.search_field :nickname_or_id_cont, class: "form-control user_search_form", placeholder: "ニックネームorユーザid" %>
+                        <%= button_tag :type => "submit", :class =>" user_search_button fa fa-search" do %>
+                        <% end %>
+                <% end %>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> User id </th>
+                    <th> ニックネーム </th>
+                    <th> E-mail </th>
+                    <th> ユーザー削除・復活</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @searches.each do |search| %>
+                    <tr>
+                        <td> <%= search.id %> </td>
+                        <td> <%= search.nickname%> </td>
+                        <td> <%= search.email %> </td>
+                        <td> <%= link_to "show", user_path(search), class: "btn btn-success" %> </td>
+                        <% if search[:soft_destroyed_at].present? %>
+                            <td style="color: red;"> <span class="glyphicon glyphicon-alert"></span> 退会者 </td>
+                        <% end %>
+                        <td> <% if admin_signed_in? %>
+                        <% if search[:soft_destroyed_at].present? %>
+                            <%= link_to "退会者を復活させる", admin_user_restore_path(search), class: "btn btn-warning" %>
+                        <% else %>
+                            <%= link_to "USER:destroy", admin_user_path(search), method: :delete, class: "btn btn-danger" %>
+                        <% end %>
+                <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- 部分テンプレート閉じタグ -->
+</div>

@@ -1,40 +1,48 @@
 class StudentsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
+	 protect_from_forgery :except => [:create]
 	def new
 		@user = User.find(params[:user_id])
-		if (@user.nickname) && (@user.image).presents?
+		if @user.nickname.present? && @user.nationality.present?
 			@student = Student.new
-			@teacher.language_students.build
+			@student.language_students.build
 		else
-			redirect_to edit_user_path(current_user), flash: {notice: "すべてのユーザ情報を登録してください"}
+			redirect_to edit_user_path(current_user), flash: {alert: "すべてのユーザ情報を登録してください"}
 		end
 	end
 
 	def create
 		@user = current_user
 		@student = Student.new(student_params)
-		@student.save
-		redirect_to student_path(@student)
+		if @student.save
+			redirect_to student_path(current_user)
+		else
+			render :new
+		end
 	end
 
 	def index
+		@requests = Request.all
+		@q = Student.ransack(params[:q])
+		if params[:q].present?
+			@students = @q.result(distinct: true).where.not(id: current_user).page(params[:page]).reverse_order
+		else
+			@students = Student.where.not(id: current_user).page(params[:page]).reverse_order
+		end
 		@request_s = Request.new
-		@students = Student.where.not(id: current_user)
 	end
 
 	def show
-		@user = current_user
 		if Student.exists?(id: params[:id])
 			@student = Student.find(params[:id])
-			@info = @student.first_language || @student.budget
 		end
-		# binding.pry
-		# || @student.message
 	end
 
 	def edit
-		@user = current_user
 		@student = Student.find(params[:id])
+		unless @student.language_students.exists?
+			@student.language_students.build
+		end
 	end
 
 	def update
@@ -47,6 +55,14 @@ class StudentsController < ApplicationController
 
 	private
 	def student_params
-		params.require(:student).permit(:budget, :first_language, :message, :user_id)
+		params.require(:student).permit(
+										:budget,
+										:first_language,
+										:message,
+										:user_id,
+										:what_to_learn,
+										:other_language,
+										language_students_attributes: [:id, :language_id, :_destroy]
+										)
 	end
 end

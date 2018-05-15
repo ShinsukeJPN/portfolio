@@ -8,13 +8,19 @@
 			<div class="col-lg-5">
 				<div class="user_img">
 					<%= attachment_image_tag @student.user,:image %>
-					<%= link_to edit_student_path(current_user) do %>
-						<div class="btn btn-black">編集</div>
+					<% if @student.id == current_user.id %>
+						<%= link_to edit_student_path(current_user) do %>
+							<div class="btn btn-black">編集</div>
+						<% end %>
+					<% else %>
+					<div class="last_login">
+						最終ログイン日:<%= @student.user.last_sign_in_at.strftime('%Y/%m/%d') %>
+					</div>
 					<% end %>
 				</div>
 			</div>
 			<div class="col-lg-7">
-				<div class="s-header cleafix">
+				<div class="s-header">
 					<% @student.user.user_areas.each do |s| %>
 						<h5>
 							<div class="area_box">
@@ -23,26 +29,33 @@
 							</div>
 						</h5>
 					<% end %>
+				</div>
+				<div class="col-lg-12 s-information">
 					<div class="col-lg-4">
-				        <h3><i class="fa fa-book icon-color"></i>言語</h3>
-				        <h5>英語</h5>
+				        <h3><i class="fa fa-book icon-color"></i>勉強する言語</h3>
+			        		<% if @student.other_language.present? %>
+			        			<h5><%= @student.other_language %>語</h5>
+			        		<% end %>
+				        	<% @student.language_students.each do |ls| %>
+						        	<h5><%= ls.language.language_name %></h5>
+				        	<% end %>
 				     </div>
 				     <div class="col-lg-4">
 				        <h3><i class="fa fa-eye icon-color"></i>値段</h3>
-				        <h5><%= @student.budget %></h5>
+				        	<h5>¥<%= number_with_delimiter(@student.budget) %></h5>
 				     </div>
 				     <div class="col-lg-4">
-				     	<h3><i class="fa fa-comment icon-color"></i>母国語</h3>
+				     		<h3><i class="fa fa-comment icon-color"></i>母国語</h3>
 				     	<h5><%= @student.first_language %></h5>
 				     </div>
 				</div>
-				<div class="s-message clearfix">
+				<div class="s-message">
 					<h3>メッセージ</h3>
-					<h5><%= @student.message %></h5>
+						<h5><%= @student.message %></h5>
 				</div>
 				<div class="s-what_to_learn">
 					<h3>学びたいこと</h3>
-					<h5><%= @student.what_to_learn %></h5>
+						<h5><%= @student.what_to_learn %></h5>
 				</div>
 			</div>
 		</div>

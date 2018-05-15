@@ -1,13 +1,15 @@
 class RoomsController < ApplicationController
 
 	def index
-		@with_teacher = Room.where(student_id: current_user).where.not(teacher_id: current_user)
-		@with_student = Room.where(teacher_id: current_user).where.not(student_id: current_user)
+		@with_teacher = Room.where(student_id: current_user)
+		@with_student = Room.where(teacher_id: current_user)
 	end
 
 	def create
 		@room = Room.new(room_params)
 		@room.save
+		request = Request.find(params[:request])
+		request.delete
 		redirect_to room_messages_path(@room)
 	end
 

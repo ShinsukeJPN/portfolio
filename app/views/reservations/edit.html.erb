@@ -1,0 +1,30 @@
+<%= render 'shared/category', user: @user, student: @student %>
+	<div class="col-lg-10">
+		<div class="user_info">
+			<div class="user_info_text">
+				<h2>レッスン編集</h2>
+					<div class="index_reservation_box">
+						<ul class="reservation">
+							<li class="reservation">
+								<%= form_for(@reservation, url: reservation_path) do |f| %>
+				  					<label>予約日</label>
+							  			<%= f.date_field :reservation_date, class: "form-control", :min => Time.now %>
+							  		<label>時間</label>
+							  			<%= f.time_select :reservation_time, :minute_step => 30, class: "form-control" %><br>
+				  					<label>場所</label>
+				  						<%= f.select(:detailed_place,
+					  						[@reservation.teacher.detailed_place_1,
+					  						 @reservation.teacher.detailed_place_2,
+					  						 @reservation.teacher.detailed_place_3]
+				  						 )
+				  					%><br>
+					  				<%= f.submit "Edit the reservation!", class: "btn btn-success" %>
+				  				<% end %>
+							</li>
+						</ul>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- 部分テンプレート閉じタグ -->
+</div>

@@ -1,8 +1,9 @@
 <%= render 'shared/category' %>
+<% if @user.nickname.present? and @user.user_areas.present? %>
 <div class="col-lg-10">
 	<div class="user_info">
 		<div class="user_info_text">
-		<h2><%= @user.nickname %>さんの基本情報</h2>
+		<h2><i class="fa fa-address-card icon-color"></i><%= @user.nickname %>さんの基本情報</h2>
 		</div>
 		<div class="col-lg-5">
 			<div class="user_img">
@@ -34,15 +35,17 @@
 			      	<td>地域</td>
 			      	<td><% @user.user_areas.each do |u| %>
 			      	 		<%= u.area.area_name %><br>
+			      	 		<%= u.area.area_name_eng %><br>
 			      	 	<% end %>
 			      	</td>
 			    </tbody>
 			 </table>
-				<%= link_to edit_user_path(current_user) do %>
+				<%= link_to edit_user_path do %>
 					<div class="btn btn-black">編集</div>
 				<% end %>
 		</div>
-		<div class="user_info">
+<% else %>
+	<div class="user_info">
 		<div class="user_info_text">
 			登録されたユーザ情報がありません。
 			<%= link_to edit_user_path do %>
@@ -51,5 +54,6 @@
 		</div>
 		</div>
 </div>
+<% end %>
 <!-- container-fluid divタグ閉じ -->
 </div>

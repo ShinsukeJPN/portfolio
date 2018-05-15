@@ -20,25 +20,16 @@
 	</head>
   	<body>
   	<header>
-	<div class="nav_box">
-		<div class="about_logo_box">
-				<%= link_to image_tag("logo_black.png", :class => 'about_logo'), root_path %>
-		</div>
-		<button class="btn btn-primary">Primary</button>
-				<nav class="clearfix">
-						<%= link_to "Find student", students_path %>
-						<%= link_to "Find teacher", teachers_path %>
-				<% if user_signed_in? %>
-						<%= link_to destroy_user_session_path, method: :delete do %>
-							<p>Log out</p>
-						<% end %>
-				<% else %>
-						<%= link_to "Log in", user_session_path %>
-						<%= link_to "Sign up", user_registration_path %>
-					<% end %>
-				</nav>
-	</div>
+		<%= image_tag("bottom_image.jpg", :class => 'bottom_img') %>
 	</header>
+	<% unless flash.empty? %>
+	 　<script type="text/javascript">
+	 　　<% flash.each do |f| %>
+	 　　　<% type = f[0].to_s.gsub('alert','error').gsub('notice','info') %>
+	　　　　　toastr['<%=type %>']('<%=f[1] %>');
+	 　　<% end %>
+	　　</script>
+	<% end %>
     	<%= yield %>
   	</body>
 </html>

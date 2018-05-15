@@ -1,0 +1,40 @@
+  <div class="top_image_box">
+    <div class="top_image">
+      <div class="top_logo_box">
+        <%= link_to image_tag("logo_black.png", :class => "top_logo"), root_path %>
+      </div>
+        <div class="devise_image_text_left">
+          <div class="devise_line1">Sign up</div>
+        </div>
+        <div class="col-lg-8 col-lg-offset2"%>
+          <div class="devise_box">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <%= f.label :email %><br/>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "color:black;" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", style: "color:black;" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off", style: "color:black;" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up", class: "btn btn-default", style:"color:black"%>
+              </div>
+            <% end %>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+    </div>
+  </div>

@@ -1,128 +1,135 @@
 <%= render 'shared/category', user: @user, student: @student %>
-	<div class="col-lg-8">
+	<div class="col-lg-10">
 		<div class="user_info">
 			<div class="user_info_text">
 				<h2>レッスン予定</h2>
+					<% if flash[:reported] %>
+						<div class="flash_message">
+							<%= flash[:reported] %>
+						</div>
+					<% end %>
 					<ul class="nav nav-tabs">
-						<li><a data-toggle="tab" href="#menu1">これからのレッスン</a></li>
+						<li class="active"><a data-toggle="tab" href="#menu1">これからのレッスン</a></li>
 						<li><a data-toggle="tab" href="#menu2">終了したレッスン</a></li>
 					</ul>
 					<div class="tab-content">
 						<div id="menu1" class="tab-pane fade in active">
-							<div class="index_reservation_box">
 								<h3>あなたが先生のレッスン</h3>
 								<% if @teacher_reservations.present? %>
 									<% @teacher_reservations.each do |tr| %>
+										<div class="index_reservation_box">
+											<ul class="reservation">
+												<li class="reservation_top">
+												<%= link_to student_path(tr) , style:"color:white;" do %>
+													<%= tr.student.user.nickname %>さんとのレッスン</li>
+												<% end %>
+												<li class="reservation">
+													<%= tr.reservation_date.strftime('%Y/%m/%d') %> <%= tr.reservation_time.strftime('%H:%M') %> START
+												</li>
+												<li class="reservation">
+													<%= tr.detailed_place %>
+												</li>
+												<li class="reservation">
+													<% if tr.detailed_place == tr.teacher.detailed_place_1 %>
+														<%= tr.teacher.detailed_address_1 %>
+													<% elsif tr.detailed_place == tr.teacher.detailed_place_2 %>
+														<%= tr.teacher.detailed_address_2 %>
+													<% else %>
+														<%= tr.teacher.detailed_address_3 %>
+													<% end %>
+												</li>
+												<li class="reservation">
+													<%= link_to "編集", edit_reservation_path(tr), class: "btn btn-success" %>
+													<%= link_to "削除", reservation_path(tr), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+												</li>
+											</ul>
+										</div>
+									<% end %>
+								<% else %>
+									<div class="index_reservation_box">
 										<ul class="reservation">
 											<li class="reservation_top">
-											<%= link_to student_path(tr) , style:"color:white;" do %>
-												<%= tr.student.user.nickname %>さんとのレッスン</li>
-											<% end %>
-											<li class="reservation">
-												<%= tr.time.strftime('%Y/%m/%d/%H:%M') %> START
-											</li>
-											<li class="reservation">
-												<%= tr.detailed_place %>
-											</li>
-											<li class="reservation">
-												<% if tr.detailed_place == tr.teacher.detailed_place_1 %>
-													<%= tr.teacher.detailed_address_1 %>
-												<% elsif tr.detailed_place == tr.teacher.detailed_place_2 %>
-													<%= tr.teacher.detailed_address_2 %>
-												<% else %>
-													<%= tr.teacher.detailed_address_3 %>
-												<% end %>
+												<p>レッスンの予定はありません</p>
 											</li>
 										</ul>
-									<% end %>
-							</div>
-								<% else %>
-							<div class="index_reservation_box">
-								<ul class="reservation">
-									<li class="reservation_top">
-										<p>レッスンの予定はありません</p>
-									</li>
-								</ul>
-							</div>
+									</div>
 								<% end %>
-							<div class="index_reservation_box">
 								<h3>あなたが生徒のレッスン</h3>
 								<% if @student_reservations.present? %>
 									<% @student_reservations.each do |sr| %>
-									<ul class="reservation">
-										<li class="reservation_top"><
-											<%= link_to teacher_path(sr) , style:"color:white;" do %>
-													<%= sr.teacher.user.nickname %>さんとのレッスン</li>
-											<% end %>
-											<li class="reservation">
-												<%= sr.time.strftime('%Y/%m/%d/%H:%M') %> START
-											</li>
-											<li class="reservation">
-												<%= sr.detailed_place %>
-											</li>
-											<li class="reservation">
-												<% if sr.detailed_place == sr.teacher.detailed_place_1 %>
-													<%= sr.teacher.detailed_address_1 %>
-												<% elsif sr.detailed_place == sr.teacher.detailed_place_2 %>
-													<%= sr.teacher.detailed_address_2 %>
-												<% else %>
-													<%= sr.teacher.detailed_address_3 %>
-												<% end %>
-											</li>
-									</ul>
-								<% end %>
-							</div>
+										<div class="index_reservation_box">
+											<ul class="reservation">
+												<li class="reservation_top">
+													<%= link_to teacher_path(sr) , style:"color:white;" do %>
+															<%= sr.teacher.user.nickname %>さんとのレッスン</li>
+													<% end %>
+												<li class="reservation">
+													<%= sr.reservation_date.strftime('%Y/%m/%d') %> <%= sr.reservation_time.strftime('%H:%M') %> START
+												</li>
+												<li class="reservation">
+													<%= sr.detailed_place %>
+												</li>
+												<li class="reservation">
+													<% if sr.detailed_place == sr.teacher.detailed_place_1 %>
+														<%= sr.teacher.detailed_address_1 %>
+													<% elsif sr.detailed_place == sr.teacher.detailed_place_2 %>
+														<%= sr.teacher.detailed_address_2 %>
+													<% else %>
+														<%= sr.teacher.detailed_address_3 %>
+													<% end %>
+												</li>
+											</ul>
+										</div>
+									<% end %>
 								<% else %>
-							<div class="index_reservation_box">
-								<ul class="reservation">
-									<li class="reservation_top">
-										<p>レッスンの予定はありません</p>
-									</li>
-								</ul>
-							</div>
+									<div class="index_reservation_box">
+										<ul class="reservation">
+											<li class="reservation_top">
+												<p>レッスンの予定はありません</p>
+											</li>
+										</ul>
+									</div>
 								<% end %>
-							</div>
 						</div>
-					</div>
 						<div id="menu2" class="tab-pane fade">
-							<div class="index_reservation_box">
 								<h3>あなたが先生の終了したレッスン</h3>
 								<% if @ws_finished_reservations.present? %>
 									<% @ws_finished_reservations.each do |sfr| %>
-									<ul class="reservation">
-										<li class="reservation_top">
-											<%= sfr.teacher.user.nickname %>先生とのレッスン
-										</li>
-										<li class="reservation">
-											<%= sfr.time.strftime('%Y/%m/%d/%H:%M') %>
-										</li>
-										<li class="reservation">
-											<%= sfr.detailed_place %>
-										</li>
-										<li class="reservation">
-											<% if sfr.detailed_place == sfr.teacher.detailed_place_1 %>
-												<%= sfr.teacher.detailed_address_1 %>
-											<% elsif sfr.detailed_place == sfr.teacher.detailed_place_2 %>
-												<%= sfr.teacher.detailed_address_2 %>
-											<% else %>
-												<%= sfr.teacher.detailed_address_3 %>
-											<% end %>
-										</li>
-							            <button class="btn btn-default" data-toggle="collapse" data-target="#menu>">
-							            	<p style="text-align:center;">何か問題がありましたか？</p>
-							            </button>
-										<div id="menu" class="collapse">
-											<li class="reservation">
-												<%= form_for(@report, url: user_reports_path) do |f| %>
-													<%= f.hidden_field :reported_user_id, value: sfr.teacher.user.id %>
-													<%= f.hidden_field :user_id, value: current_user.id %>
-													<%= f.select :report_reason, ["レッスンにこなかった", "レッスンでトラブルがあった", "その他"] %>
-													<%= f.text_area :report_comment, class: "form-control", placeholder: "コメント" %>
-												<%= f.submit "レポートを送る" %>
-												<% end %>
-											</li>
+										<div class="index_reservation_box">
+											<ul class="reservation">
+												<li class="reservation_top">
+													<%= sfr.teacher.user.nickname %>さんとのレッスン
+												</li>
+												<li class="reservation">
+													<%= sfr.reservation_date.strftime('%Y/%m/%d') %> <%= sfr.reservation_time.strftime('%H:%M') %> START
+												</li>
+												<li class="reservation">
+													<%= sfr.detailed_place %>
+												</li>
+												<li class="reservation">
+													<% if sfr.detailed_place == sfr.teacher.detailed_place_1 %>
+														<%= sfr.teacher.detailed_address_1 %>
+													<% elsif sfr.detailed_place == sfr.teacher.detailed_place_2 %>
+														<%= sfr.teacher.detailed_address_2 %>
+													<% else %>
+														<%= sfr.teacher.detailed_address_3 %>
+													<% end %>
+												</li>
+										            <button type="button" class="btn btn-report" data-toggle="collapse" data-target="#report<%= sfr.id %>">
+										            	<p style="text-align:center;">何か問題がありましたか？</p>
+										            </button>
+													<div id="report<%= sfr.id %>" class="collapse">
+															<%= form_for(@report, url: user_reports_path) do |f| %>
+																<%= hidden_field_tag :reservation, sfr.id %>
+																<%= f.hidden_field :reported_user_id, value: sfr.teacher.user.id %>
+																<%= f.hidden_field :user_id, value: current_user.id %>
+																<%= f.select :report_reason, ["レッスンにこなかった", "レッスンでトラブルがあった", "その他"] %>
+																<%= f.text_area :report_comment, class: "form-control", placeholder: "コメント" %>
+															<%= f.submit "レポートを送る" %>
+															<% end %>
+													</div>
+											</ul>
 										</div>
-									</ul>
 									<% end %>
 								<% else %>
 									<div class="index_reservation_box">
@@ -133,30 +140,45 @@
 										</ul>
 									</div>
 								<% end %>
-							<div class="index_reservation_box">
 								<h3>あなたが生徒の終了したレッスン</h3>
 								<% if @wt_finished_reservations.present? %>
 									<% @wt_finished_reservations.each do |tfr| %>
-									<ul class="reservation">
-										<li class="reservation_top">
-											<%= tfr.teacher.user.nickname %>先生とのレッスン
-										</li>
-										<li class="reservation">
-											<%= tfr.time.strftime('%Y/%m/%d/%H:%M') %>
-										</li>
-										<li class="reservation">
-											<%= tfr.detailed_place %>
-										</li>
-										<li class="reservation">
-											<% if tfr.detailed_place == tfr.teacher.detailed_place_1 %>
-												<%= tfr.teacher.detailed_address_1 %>
-											<% elsif tfr.detailed_place == tfr.teacher.detailed_place_2 %>
-												<%= tfr.teacher.detailed_address_2 %>
-											<% else %>
-												<%= tfr.teacher.detailed_address_3 %>
-											<% end %>
-										</li>
-									</ul>
+										<div class="index_reservation_box">
+											<ul class="reservation">
+												<li class="reservation_top">
+													<%= tfr.teacher.user.nickname %>さんとのレッスン
+												</li>
+												<li class="reservation">
+													<%= tfr.reservation_date.strftime('%Y/%m/%d') %> <%= tfr.reservation_time.strftime('%H:%M') %> START
+												</li>
+												<li class="reservation">
+													<%= tfr.detailed_place %>
+												</li>
+												<li class="reservation">
+													<% if tfr.detailed_place == tfr.teacher.detailed_place_1 %>
+														<%= tfr.teacher.detailed_address_1 %>
+													<% elsif tfr.detailed_place == tfr.teacher.detailed_place_2 %>
+														<%= tfr.teacher.detailed_address_2 %>
+													<% else %>
+														<%= tfr.teacher.detailed_address_3 %>
+													<% end %>
+												</li>
+										            <button type="button" class="btn btn-report" data-toggle="collapse" data-target="#report<%= tfr.id %>" style="background-color:#b79aa6;">
+										            	<p style="text-align:center;">何か問題がありましたか？</p>
+										            </button>
+													<div id="report<%= tfr.id %>" class="collapse">
+														<div class="dropdown">
+															<%= form_for(@report, url: user_reports_path) do |f| %>
+																<%= f.hidden_field :reported_user_id, value: tfr.student.user.id %>
+																<%= f.hidden_field :user_id, value: current_user.id %>
+																<%= f.select :report_reason, ["レッスンにこなかった", "レッスンでトラブルがあった", "その他"] %>
+																<%= f.text_area :report_comment, class: "form-control", placeholder: "コメント" %>
+															<%= f.submit "レポートを送る" %>
+															<% end %>
+														</div>
+													</div>
+											</ul>
+										</div>
 									<% end %>
 								<% else %>
 									<div class="index_reservation_box">

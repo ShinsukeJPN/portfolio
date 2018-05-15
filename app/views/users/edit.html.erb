@@ -1,48 +1,85 @@
 <%= render 'shared/category' %>
 <div class="col-lg-8">
-  <% if flash[:notice] %>
-  	<div class="flash_message">
-  		<%= flash[:notice] %>
-  	</div>
-  <% end %>
-		<div class="user_info">
-			<div class="user_info_text">
-				<h2>基本情報登録</h2>
-					<div class="container">
-						<div class="row">
-   				    		<%= form_for(@user) do |f| %>
-			    			<div class="col-lg-12">
-								<%= attachment_image_tag @user,:image, class:"index_img", fallback: "No_img.jpg" %>
-			    				<%= f.attachment_field :image %>
-			    			</div>
-						      <div class="col-lg-3">
-						        <div class="form-group", style="margin-left:300px;">
-						   		    <label class="control-label">Nickname</label><br>
-						            <label class="control-label">Country</label><br>
-					            	<label class="control-label">Age</label><br>
-					            	<label class="control-label">Gender</label><br>
-					            	<label class="control-label">Area</label>
-					            </div>
-					          </div>
-				              <div class="col-lg-9">
-						        <div class="form-group", style="margin-right:300px;">
-						    		<%= f.text_field :nickname %><br>
-			 					    <%= f.text_field :nationality %><br>
-					            	<%= f.number_field :age, min:"18" %><br>
-									<%= f.label :男性　%>	<%= f.radio_button :gender, :男性, checked: "checked" %>
-									<%= f.label :女性 %><%= f.radio_button :gender, :女性 %>
-						        	 <%= f.fields_for :user_areas do |au| %><br>
-						        		<%= au.collection_select :area_id, Area.all, :id, :area_name %><br>
-						        		<%= au.submit "いけ" %>
-							         <% end %>
-						            <%= f.submit "送信" %><br>
-						    		<% end %>
-				        	    </div>
-				              </div>
-
-				      </div>
-					</div>
+	<div class="user_info">
+		<div class="user_info_text">
+			<h2>基本情報登録・更新</h2>
 		</div>
+    		<%= form_for(@user) do |f| %>
+				<div class="container">
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>あなたの画像</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+					    				<%= f.attachment_field :image, style:"margin-left:135px;" %>
+					    			</div>
+				    			</div>
+				    		</div>
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>ニックネーム</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+							    		<%= f.text_field :nickname %>
+					    			</div>
+				    			</div>
+				    		</div>
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>国</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+			 					    <%= f.text_field :nationality %>
+					    			</div>
+				    			</div>
+				    		</div>
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>性別</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+			   				    	<label><%= f.radio_button :gender, "男性", class:"form-check-input" %>　男性 </label>
+			   				    	<label><%= f.radio_button :gender, "女性", class:"form-check-input" %>　女性</label>
+					    			</div>
+				    			</div>
+				    		</div>
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>年齢</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+					            	<%= f.number_field :age, min:"18" %>
+					    			</div>
+				    			</div>
+				    		</div>
+	   				    	<div class="col-sm-8  col-sm-offset-2">
+	   				    		<div class="form_group">
+		   				    		<div class="col-sm-3">
+			   				    		<label>地域</label>
+			   				    	</div>
+			   				    	<div class="col-sm-9">
+			   				    		<%= nested_form_for @user do |n| %>
+			   				    			<%= n.fields_for :user_areas do |ua| %>
+			   				    				<%= ua.collection_select :area_id, Area.all, :id, :area_name %>
+			   				    				<%= ua.link_to_remove "削除" %>
+			   				    			<% end %>
+			   				    			<%= n.link_to_add "追加", :user_areas %>
+			   				    		<% end %>
+						        	</div>
+						        </div>
+						    </div>
+						    <div class="col-sm-8 col-sm-offset-2"><br>
+					          <%= f.submit "送信", class: "btn btn-black" %>
+					        </div>
+					      </div>
+				</div>
+	  		<% end %>
 	</div>
+</div>
 <!-- 部分テンプレート閉じタグ -->
 </div>

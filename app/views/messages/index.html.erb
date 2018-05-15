@@ -1,5 +1,5 @@
 <%= render 'shared/category', user: @user, student: @student %>
-	<div class="col-lg-8">
+	<div class="col-lg-10">
 		<div class="user_info">
 			<div class="user_info_text">
 				<div class="message_header">
@@ -18,6 +18,13 @@
 							<h2><%= @room.teacher.user.nickname %>さんとのメッセージ</h2>
 						</div>
 					<% end %>
+					<% if @message.errors.any? %>
+				        <div id="error_explanation" class="text-center">
+				          <h4><%= @message.errors.count %>件のエラーが発生しました。</h4>
+				          <% @message.errors.full_messages.each do |message| %>
+				            <h6><%= message %></h6>
+						  <% end %>
+				    <% end %>
 				</div>
 				<div class="message_box">
 						<% if @over_seven %>
@@ -46,10 +53,10 @@
 								<p>初めてのメッセージです！</p>
 							<% end %>
 							<%= form_for(@message, url: room_messages_path) do |f| %>
-								<%= f.text_area :comment %>
+								<%= f.text_area :comment, class: "form-control", style: "width: 300px; margin:0 auto;" %>
 								<%= f.hidden_field :send_user_id, :value => current_user.id %>
 								<%= f.hidden_field :room_id, :value => @room.id %>
-								<%= f.submit "送信" %>
+								<%= f.submit "送信", class: "btn btn-default" %>
 							<% end %>
 							<%= link_to "メッセージ一覧に戻る", user_rooms_path(current_user) %>
 								<% if @room.teacher.id == current_user.id %>
@@ -59,8 +66,11 @@
 										</div>
 										<div class="reservation_form">
 											<%= form_for(@reservation, url: user_reservations_path(current_user)) do |f| %>
-							  					<label class="control-label" for="">予約日時</label>
-							  					<%= f.time_select :time, :start_year => Time.now.year, :end_year => Time.now.year + 2, :minute_step	=> 30 %>
+							  					<label>予約日</label>
+							  					<%= f.date_field :reservation_date, class: "form-control", style: "width: 300px; margin:0 auto;", :min => Time.now %>
+							  					<label>時間</label>
+							  					<%= f.time_select :reservation_time, :minute_step => 30, class: "form-control" %><br>
+							  					<label>場所</label>
 							  					<%= f.select(:detailed_place,
 							  						[@room.teacher.detailed_place_1,
 							  						 @room.teacher.detailed_place_2,
@@ -69,7 +79,7 @@
 							  					<%= f.hidden_field :student_id, :value => @room.student.id %>
 							  					<%= f.hidden_field :teacher_id, :value => current_user.id %>
 							  					<%= f.hidden_field :status, :value => "予定" %>
-								  				<%= f.submit "Make a reservation!" %>
+								  				<%= f.submit "Make a reservation!", class: "btn btn-success" %>
 							  				<% end %>
 							  			</div>
 							  		</div>

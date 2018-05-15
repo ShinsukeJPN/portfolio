@@ -1,5 +1,5 @@
 <%= render 'shared/category', user: @user, student: @student %>
-	<div class="col-lg-8">
+	<div class="col-lg-10">
 		<div class="user_info">
 			<div class="user_info_text">
 				<h2>メッセージ一覧</h2>
@@ -7,46 +7,55 @@
 						<li><a data-toggle="tab" href="#menu1">先生とのメッセージ</a></li>
 						<li><a data-toggle="tab" href="#menu2">生徒とのメッセージ</a></li>
 					</ul>
-					<div class="tab-content">
-						<div class="col-lg-8 col-lg-offset-2">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="tab-content">
 							<div id="menu1" class="tab-pane fade in active">
-								<% @with_teacher.includes(:messages).order('messages.created_at desc').each do |rt| %>
-									<div class="room_box">
-										<div class="request_img">
-											<%= attachment_image_tag rt.teacher.user,:image %>
+								<% if @with_teacher.present? %>
+									<% @with_teacher.includes(:messages).order('messages.created_at desc').each do |rt| %>
+										<div class="room_box">
+												<div class="room_img">
+													<%= attachment_image_tag rt.teacher.user,:image %>
+												</div>
+												<div class="room_text">
+													<%= link_to "#{rt.teacher.user.nickname}さんとのメッセージ", room_messages_path(rt) %><br>
+														<% rt.messages.each do |message| %>
+															<%# if i == rt.messages.length - 1 %>
+															  <div class="message_comment">
+															  	最終送受信：<%= message.created_at.strftime('%Y/%m/%d') %>
+															  	『<%= message.comment %>』
+															  </div>
+														<% break %>
+															<%# end %>
+														<% end %>
+												</div>
 										</div>
-										<div class="room_text">
-											<%= link_to "#{rt.teacher.user.nickname}さんとのメッセージ", room_messages_path(rt) %><br>
-												<% rt.messages.each_with_index do |message, i| %>
-													<% if i == rt.messages.length - 1 %>
-													  <div class="message_comment">
-													  	<%= message.comment %>
-													  	<%= message.created_at.strftime('%Y/%m/%d') %>
-													  </div>
-													<% end %>
-												<% end %>
-										</div>
-									</div>
+									<% end %>
+								<% else %>
+									<h3>先生とのメッセージはありません</h3>
 								<% end %>
 							</div>
 							<div id="menu2" class="tab-pane fade">
-								<% @with_student.includes(:messages).order('messages.created_at desc').each do |rs| %>
-									<div class="room_box" >
-										<div class="request_img">
-											<%= attachment_image_tag rs.student.user,:image %>
+								<% if @with_student.present? %>
+									<% @with_student.includes(:messages).order('messages.created_at desc').each do |rs| %>
+										<div class="room_box" >
+												<div class="room_img">
+													<%= attachment_image_tag rs.student.user,:image %>
+												</div>
+												<div class="room_text">
+													<%= link_to "#{rs.student.user.nickname}さんとのメッセージ", room_messages_path(rs) %><br>
+														<% rs.messages.each do |s| %>
+															<%# if i == rs.messages.length - 1 %>
+																<div class="message_comment">
+																	最終送受信：<%= s.created_at.strftime('%Y/%m/%d') %>
+																	『<%= s.comment %>』
+																</div>
+														<% break %>
+														<% end %>
+												</div>
 										</div>
-										<div class="room_text">
-											<%= link_to "#{rs.student.user.nickname}さんとのメッセージ", room_messages_path(rs) %><br>
-												<% rs.messages.each_with_index do |s, i| %>
-													<% if i == rs.messages.length - 1 %>
-														<div class="message_comment">
-															<%= s.comment %>
-															<%= s.created_at.strftime('%Y/%m/%d') %>
-														</div>
-													<% end %>
-												<% end %>
-										</div>
-									</div>
+									<% end %>
+								<% else %>
+									<h3>生徒とのメッセージはありません</h3>
 								<% end %>
 							</div>
 						</div>

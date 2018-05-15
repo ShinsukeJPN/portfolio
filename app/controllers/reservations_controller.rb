@@ -4,10 +4,10 @@ class ReservationsController < ApplicationController
 	end
 
 	def index
-		@teacher_reservations = Reservation.where(teacher_id: current_user.id).where.not("reservations.time < ?", Time.now)
-		@student_reservations = Reservation.where(student_id: current_user.id).where.not("reservations.time < ?", Time.now)
-		@ws_finished_reservations = Reservation.where("reservations.time < ?", Time.now).where(teacher_id: current_user)
-		@wt_finished_reservations = Reservation.where("reservations.time < ?", Time.now).where(student_id: current_user)
+		@teacher_reservations = Reservation.where(teacher_id: current_user).where("reservations.reservation_date > ?", Time.now)
+		@student_reservations = Reservation.where(student_id: current_user).where("reservations.reservation_date > ?", Time.now)
+		@ws_finished_reservations = Reservation.where("reservations.reservation_date < ?", Time.now).where(teacher_id: current_user)
+		@wt_finished_reservations = Reservation.where("reservations.reservation_date < ?", Time.now).where(student_id: current_user)
 		@report = Report.new
 	end
 
@@ -18,18 +18,23 @@ class ReservationsController < ApplicationController
 	end
 
 	def edit
-		@reseravtion = Reservation.find(params[:id])
+		@reservation = Reservation.find(params[:id])
 	end
 
 	def update
+		@reservation = Reservation.find(params[:id])
+		@reservation.update(reservation_params)
+		redirect_to user_reservations_path(current_user)
 	end
 
 	def destroy
-
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		redirect_to user_reservations_path(current_user)
 	end
 
 	private
 	def reservation_params
-		params.require(:reservation).permit(:date, :time, :detailed_place, :teacher_id, :student_id, :status)
+		params.require(:reservation).permit(:reservation_time, :reservation_date, :detailed_place, :teacher_id, :student_id, :status)
 	end
 end

@@ -2,89 +2,95 @@
 	<%= render 'shared/category' %>
 		<div class="col-lg-8">
 				<div class="search_box">
-					<div class="search_text">
-						<p>生徒を検索</p><br>
-						<span class="dropdown">
-							  <label class="control-label col-sm-2" for=>価格:</label>
-	                      <span class="col-sm-4">
-	                      <select class="form-control" id="budged">
-	                        <option>〜¥1,500/1h</option>
-	                        <option>〜¥2,000/1h</option>
-	                        <option>〜¥2,500/1h</option>
-	                        <option>〜¥3,000/1h</option>
-	                        <option>¥3,000〜/1h</option>
-	                      </select>
-	                  	  </span>
-				      	</span><br><br>
-				      	<div class="area_box">
-						エリア
-							<form action="cgi-bin/abc.cgi" method="post">
-							<p>
-							<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
-							<input type="checkbox" name="riyu" value="2">新宿区
-							<input type="checkbox" name="riyu" value="3">大田区
-							<input type="checkbox" name="riyu" value="1" checked="checked">品川区
-							<input type="checkbox" name="riyu" value="2">世田谷区
-							<input type="checkbox" name="riyu" value="3">港区
-							<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
-							<input type="checkbox" name="riyu" value="2">新宿区
-							<input type="checkbox" name="riyu" value="3">大田区
-							<input type="checkbox" name="riyu" value="1" checked="checked">渋谷区
-							<input type="checkbox" name="riyu" value="2">新宿区
-							<input type="checkbox" name="riyu" value="3">大田区
-							</p>
-							</form>
-						</div>
-						言語
-							<form action="cgi-bin/abc.cgi" method="post">
-							<p>
-							<input type="checkbox" name="riyu" value="1" checked="checked">英語
-							<input type="checkbox" name="riyu" value="2">中国語（繁体字)
-							<input type="checkbox" name="ri
-							yu" value="3">中国語(簡体字)
-							<input type="checkbox" name="riyu" value="1" checked="checked">スペイン語
-							<input type="checkbox" name="riyu" value="2">イタリア語
-							<input type="checkbox" name="riyu" value="3">ドイツ語<br>
-							<input type="checkbox" name="riyu" value="1" checked="checked">フランス語
-							<input type="checkbox" name="riyu" value="2">ロシア語
-							<input type="checkbox" name="riyu" value="3">タイ語
-							<input type="checkbox" name="riyu" value="1" checked="checked">ポルトガル語
-							<input type="checkbox" name="riyu" value="2">その他の言語
-							</p>
-							</form>
-							<span class="btn btn-black">Search!</span></p>
-					</div>
-				</div>
-				<% @students.each do |s| %>
-						<div class="col-lg-4">
-						<div class="index_box">
-							<div class="index_img">
-							<%= link_to student_path(s) do %>
-								<%= attachment_image_tag s.user,:image, class:"index_img", fallback: "No_img.jpg" %>
-							<% end %>
+						<%= search_form_for(@q, :url => {:controller => '/students', :action => 'index'}) do |f| %>
+							<!-- 　チェックボックスが長過ぎるのでやめ -->
+								<%#= f.collection_check_boxes(:id_in, Area.all, :id, :area_name) do |b| %>
+									<%#= b.label {b.check_box + b.text} %>
+								<%# end %>
+						<h4 style="margin:0 auto;">生徒を検索</h4>
+						<div class="col-lg-12">
+							<div class="col-lg-4">
+								<h5>地域で探す</h5>
+									<%= f.collection_select :user_areas_id_eq, Area.all, :id, :area_name, include_blank: '選択してください' %>
 							</div>
-							<table>
-								<tr>
-									<td><div class="fa fa-user"><%= s.user.nickname %>--<%= s.user.age %></td>
-								</tr>
-								<tr>
-									<td><div class="fa fa-comment"><%= s.message %></td>
-								</tr>
-								<tr>
-									<td><%= form_for(@request_s, url: student_requests_path(s.id), method: :post) do |f| %>
-										<%= f.hidden_field :teacher_id, :value => current_user.id %>
-										<%= f.hidden_field :student_id, :value => s.id %>
-										<%= f.hidden_field :status, :value => "保留" %>
-										<%= f.hidden_field :receiver_id, :value => s.id %>
-										<%= f.submit "メッセージリクエスト", class:"btn btn-default" %>
-										<% end %>
-									</td>
-								</tr>
-							</table>
-						</div>
-						</div>
+							<div class="col-lg-4">
+								<h5>言語で探す</h5>
+									<%= f.collection_radio_buttons :languages_id_in, Language.all, :id, :language_name %>
+								<h5>その他の言語</h5>
+								<div class="form-inline">
+									<%= f.search_field :other_language_cont, class: "form-control search_form", placeholder: "例:タガログ" %>語
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<h5>予算を選択(/1h)</h5>
+								<div class="select">
+									<%= f.select :budget_eq, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000", "3500円" => "3500", "4000円" => "4000", "4500円" => "4500", "5000円" => "5000"}, include_blank: '選択してください' %>
+								</div>
+	           				     	<%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
+					      			<% end %>
+				      		</div>
+				      	<% end %>
+				       </div>
+				</div>
+				<% if @students.present? %>
+					<% @students.each do |s| %>
+							<div class="col-lg-4">
+								<div class="index_box">
+									<div class="index_img">
+									<%= link_to student_path(s) do %>
+										<%= attachment_image_tag s.user,:image, class:"index_img", fallback: "No_img.jpg" %>
+									<% end %>
+									</div>
+									<table>
+										<tr>
+											<td><div class="fa fa-user"><%= s.user.nickname %></td>
+										</tr>
+										<tr>
+											<td><div class="fa fa-comment"><%= s.message %></td>
+										</tr>
+										<tr>
+											<td>
+												値段：<%= s.budget %>円(1h)
+											</td>
+										<tr>
+										<tr>
+											<td>
+												言語:
+												<% s.language_students.each do |ls| %>
+												<%= ls.language.language_name %>,
+												<% end %>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<% unless @requests.exists?(teacher_id: current_user.id, student_id: s.id) %>
+													<%= form_for(@request_s, url: student_requests_path(s.id), method: :post) do |f| %>
+													<%= f.hidden_field :teacher_id, :value => current_user.id %>
+													<%= f.hidden_field :student_id, :value => s.id %>
+													<%= f.hidden_field :status, :value => "保留" %>
+													<%= f.hidden_field :receiver_id, :value => s.id %>
+													<%= f.hidden_field :send_user_id, :value => current_user.id %>
+													<%= f.submit "メッセージリクエストを送る", class:"btn btn-blue" %>
+													<% end %>
+												<% else %>
+													<div class="requested_button">
+														<h5>メッセージリクエスト受信・送信済</h5>
+													</div>
+												<% end %>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+					<% end %>
+				<div class="pagination">
+					<%= paginate @students %>
+				</div>
+				<% else %>
+					<div class="flash_message">
+						条件に合う生徒は見つかりませんでした
+					</div>
 				<% end %>
-			</div>
 		</div>
 <% else %>
   <div class="col-lg-12">

@@ -1,38 +1,54 @@
-<div class="top_back_image">
-	<div class="top_image_box">
-		<div class="top_image">
-			<div class="top_top">
-				<div class="top_box_1">
-					<%= link_to about_path do %>
-						<div class="top_text_1">
-							About
-						</div>
-					<% end %>
-				</div>
-				<div class="top_box_2">
-					<%= link_to students_path do %>
-						<div class="top_text_2">
-							Find People
-						</div>
-					<% end %>
-				</div>
+ <div class="top_image_box">
+	<div class="top_image">
+			<div class="top_logo_box">
+				<%= image_tag("logo_black.png", :class => "top_logo") %>
 			</div>
-			<div class="top_middle">
-				<div class="top_box_3">
-					<%= link_to new_user_session_path do %>
-						<div class="top_text_3">
-							Log In
-						</div>
-					<% end %>
+				<div class="top_image_text_left">
+					<div class="line1">Find your own language</div>
+					<div class="line2">teacher and student</div>
 				</div>
-				<div class="top_box_4">
-					<%= link_to new_user_registration_path do %>
-						<div class="top_text_4">
-							Sign Up
-						</div>
-					<% end %>
+				<div class="top_image_text_right">
+					<div class="top_image_text_1">\ Hello! /</div>
+					<div class="top_image_text_2"> \ 你好 /	</div>
+					<div class="top_image_text_3">	\ guten Tag / </div>
+					<div class="top_image_text_4"> \ Сайн байна уу? /่</div>
+					<div class="top_image_text_5"> \ Ciao /</div>
+					<div class="top_image_text_6">\ Bonjour /</div>
+					<div class="top_image_text_7">\ Hola /</div>
+					<div class="top_image_text_8"> \ 안녕하세요 /</div>
 				</div>
-			</div>
+		<div class="col-lg-8 col-lg-offset2"%>
+				<div class="top_top">
+					<div class="top_subtitle">
+						<p>語学のレッスンパートナーを探すサイト</p>
+					</div>
+						<div class="top_box_1">
+							<%= link_to rules_path do %>
+								<div class="top_text_1">
+									Rules
+								</div>
+							<% end %>
+						</div>
+						<div class="top_box_3">
+							<%= link_to new_user_session_path do %>
+								<div class="top_text_3">
+									Log In
+								</div>
+							<% end %>
+						</div>
+						<div class="top_box_4">
+							<%= link_to new_user_registration_path do %>
+								<div class="top_text_4">
+									Sign Up
+								</div>
+							<% end %>
+						</div>
+						<%= link_to user_google_oauth2_omniauth_authorize_path do %>
+							<div class="google">
+							<img src="assets/gplus.png", href="", style="width:35px; padding:0 0 4px 4px;">Googleアカウントでログイン
+							</div>
+						<% end %>
+				</div>
 		</div>
 	</div>
 </div>
