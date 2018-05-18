@@ -18,13 +18,3 @@
 //= require moment
 //= require toastr
 //= require_tree .
-
-document.getElementById('others').style.display = "none";
-
-<script type="text/javascript">
-        $(window).on('load', function () {
-            $('.selectpicker').selectpicker({
-                'selectedText': 'cat'
-            });
-        });
-</script>

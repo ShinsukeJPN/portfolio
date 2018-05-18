@@ -107,7 +107,7 @@ border-radius: 2px;
 	height: 900px;
 	margin-top: -20px;
 /*	-webkit-filter: grayscale(100%);
-  	filter: grayscale(100%);
+  	filter: grayscale(100%);fa
 */}
 
 .top_logo_box {
@@ -381,6 +381,7 @@ border-radius: 2px;
 	color: white;
 	background-color: #b79aa6;
 }
+
 .btn-black {
 	margin-top: 5px;
     border-radius: 10px;
@@ -581,7 +582,7 @@ header {
     color: #535641;
     font-weight: bold;
     letter-spacing: 0.15em;
-    }
+ }
 
 .area_select{
 	width: 180px;
@@ -621,7 +622,7 @@ caption {
 
 .index_img:nth-child(3n+2) {
 	margin-right: 30px;
-	margin:left: 30px;
+	margin-left: 30px;
 	width: 200px;
 	height: 2
 }
@@ -911,10 +912,6 @@ caption {
 .category_box p {
     margin: 0;
     padding: 0;
-}
-
-.category_list{
-	color: ;
 }
 
 .office_img {
@@ -1214,7 +1211,6 @@ li.reservation_top {
 }
 
 .page {
-
 }
 
 .pagination {
