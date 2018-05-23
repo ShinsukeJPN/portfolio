@@ -28,6 +28,40 @@
 		    	</div>
 		</div>
 <% else %>
+<header>
+<div class="header_bar">
+  <div id="nav-drawer">
+	<div class="navToggle">
+    	<span></span><span></span><span></span><span>menu</span>
+	</div>
+	<nav class="globalMenuSp">
+	    <ul>
+			<li class="category_list">
+	    		<%= link_to "ユーザ情報", user_path(current_user) %>
+	    	</li>
+	    	<li class="category_list">
+	    		<%= link_to "生徒情報", student_path(current_user) %>
+	   		</li>
+	    	<li class="category_list">
+	    		<%= link_to "先生情報", teacher_path(current_user) %>
+	    	</li>
+	    	<li class="category_list">
+	    		<%= link_to "予約一覧", user_reservations_path(current_user) %>
+	    	</li>
+	    	<li class="category_list">
+	    		<%= link_to "メッセージ一覧", user_rooms_path(current_user) %>
+	    	</li>
+	    	<li class="category_list">
+	    		<%= link_to "メッセージリクエスト一覧", user_requests_path(current_user) %>
+	    	</li>
+	    	<li class="category_list">
+				<%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
+			</li>
+	    </ul>
+	</nav>
+  </div>
+</div>
+</header>
 	<div class="container-fluid">
 	    <div class="col-lg-2">
 	    	<div class="side-bar">

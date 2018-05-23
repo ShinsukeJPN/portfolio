@@ -1,3 +1,257 @@
-// Place all the styles related to the teachers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.teacher_info {
+	text-align: center;
+	border-bottom: 1px solid #CCC;
+}
+
+.teacher_info_text h2 {
+	margin: 30px 0 30px 0;
+	color: #546E7A;
+}
+
+.information_box {
+	width: 100%;
+}
+
+.last_login {
+	color: #546E7A;
+}
+
+.t-header {
+	width: 100%;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+}
+
+.t-information {
+	width: 100%;
+	color: #546E7A;
+	border-bottom: 1px solid #CCC;
+}
+
+.t-background {
+	width: 100%;
+	margin-top: 20px;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+    white-space:pre-wrap;
+}
+
+.t-bring {
+	width: 100%;
+	margin-top: 50px;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+}
+
+.t-place-1 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+}
+
+.t-place-2 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+}
+
+.t-place-3 {
+	margin: 50px 0 50px 0;
+	border-bottom: 1px solid #CCC;
+	color: #546E7A;
+}
+
+
+.search_box {
+	width: 100%;
+	height: 320px;
+	background : rgba(184, 210, 0, 0.2);
+	color: black;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.32);/*影*/
+ 	padding: 0.5em 1em;
+ 	background-image: url(search_image.jpg);
+
+}
+
+.search_box h4 {
+    /*border-bottom: 10px solid #b8d200;*/
+    padding: 6px;
+    text-align: center;
+    color: #535641;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+ }
+
+.area_select{
+	width: 180px;
+}
+
+.search_form {
+	width: 200px;
+}
+
+.search_text {
+	text-align: center;
+}
+
+.search-button {
+	width: 60px;
+	height: 40px;
+	margin: 40px 3px 0 10px;
+	border-radius: 10px;
+	background-color: #b8d200;
+}
+
+.search-button:hover{
+position:relative;
+top:2px;
+left:2px;
+}
+
+caption {
+	text-align: center;
+}
+
+.index_img img {
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+
+.index_img:nth-child(3n+2) {
+	margin-right: 30px;
+	margin-left: 30px;
+	width: 200px;
+	height: 2
+}
+
+.index_img:nth-child(n + 3){
+	margin-top: 20px;
+}
+
+.index_img:hover {
+    transition:all 0.5s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
+}
+
+.index_box {
+	width: 300px;
+	height: 450px;
+	padding: 15px 0 0 20px;
+    margin: 2em 0;
+    border: solid 4px #4ec4d3;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
+.message_container {
+  width: 250px;
+　word-wrap:break-all;
+  }
+
+.message_container p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+@media screen and (max-width:750px) {
+
+.area_box {
+	width: 350px;
+	height: 100%;
+	background-color: mintcream;
+	border-radius: 50px;
+	position: inline-block;
+	border: 2px solid;
+}
+
+.search_box {
+	width: 100%;
+	height: 600px;
+	background : rgba(184, 210, 0, 0.2);
+	color: black;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.32);/*影*/
+ 	padding: 0.5em 1em;
+ 	background-image: url(search_image.jpg);
+
+}
+
+.search_box h4 {
+    padding: 6px;
+    text-align: center;
+    color: #535641;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+ }
+
+.area_select{
+	width: 180px;
+}
+
+.search_form {
+	width: 200px;
+}
+
+.search_text {
+	text-align: center;
+}
+
+.search-button {
+	width: 100%;
+	height: 40px;
+	margin: 40px 3px 0 10px;
+	border-radius: 10px;
+	background-color: #b8d200;
+}
+
+.search-button:hover{
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+.index_img img {
+	width: 250px;
+	height: 250px;
+	float: left;
+}
+
+.index_img:nth-child(3n+2) {
+	margin-right: 30px;
+	margin-left: 30px;
+	width: 200px;
+	height: 2
+}
+
+.index_img:nth-child(n + 3){
+	margin-top: 20px;
+}
+
+.index_img:hover {
+    transition:all 0.5s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
+}
+
+.index_box {
+	width: 300px;
+	height: 470px;
+	padding: 15px 0 0 20px;
+    margin: 2em auto;
+    border: solid 4px #4ec4d3;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
+table {
+	width: 100%;
+	float: left;
+}
+
+
+}
+
+@import "users";

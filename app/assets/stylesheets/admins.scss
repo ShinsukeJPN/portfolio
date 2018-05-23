@@ -1,3 +1,29 @@
-// Place all the styles related to the admins controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_search_box {
+	width: 300px;
+	float: left;
+	padding-top: 33px;
+}
+
+.user_search_form {
+	border-radius: 20px 0 0 20px;
+	width: 250px;
+	height: 40px;
+	float: left;
+	border: 1px solid;
+	border-color:  #b8d200;
+}
+
+.user_search_button {
+	width: 40px;
+	height: 40px;
+	float: left;
+	border-radius: 0 20px 20px 0;
+	border: double;
+	border-color: #b8d200;
+}
+
+.user_search_button:hover {
+	background-color: #b8d200;
+	color: #fff;
+	border-color: #b8d200;
+}

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	# before_action :authenticate_user!
+	before_action :correct_user, only: [:edit]
 	def edit
 		@user = User.find(params[:id])
 		unless @user.user_areas.exists?
@@ -39,8 +39,11 @@ class UsersController < ApplicationController
 									)
 	end
 
-	def authenticate_user!
-		redirect_to root_path
-		# unless admin_signed_in?
+	def correct_user
+		user = User.find(params[:id])
+			unless user.id == current_user.id
+				redirect_to user_path(current_user)
+			end
 	end
+
 end

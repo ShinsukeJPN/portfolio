@@ -18,3 +18,14 @@
 //= require moment
 //= require toastr
 //= require_tree .
+
+$(function() {
+    $('.navToggle').click(function() {
+        $(this).toggleClass('active');
+        if ($(this).hasClass('active')) {
+            $('.globalMenuSp').addClass('active');
+        } else {
+            $('.globalMenuSp').removeClass('active');
+        }
+    });
+});

@@ -22,7 +22,7 @@
 															<%# if i == rt.messages.length - 1 %>
 															  <div class="message_comment">
 															  	最終送受信：<%= message.created_at.strftime('%Y/%m/%d') %>
-															  	『<%= message.comment %>』
+															  	『<%= truncate(message.comment, length: 40)%>』
 															  </div>
 														<% break %>
 															<%# end %>
@@ -45,9 +45,10 @@
 													<%= link_to "#{rs.student.user.nickname}さんとのメッセージ", room_messages_path(rs) %><br>
 														<% rs.messages.each do |s| %>
 															<%# if i == rs.messages.length - 1 %>
-																<div class="message_comment">
+																<div class="message_time">
 																	最終送受信：<%= s.created_at.strftime('%Y/%m/%d') %>
-																	『<%= s.comment %>』
+																<div class="message_comment">
+																	『<%= truncate(s.comment, length: 40) %>』
 																</div>
 														<% break %>
 														<% end %>

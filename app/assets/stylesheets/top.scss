@@ -1,0 +1,708 @@
+/*サインアップ画面*/
+.top_box {
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: gray;
+	border-radius: 30px;
+}
+
+.flash_message {
+	margin-top: 30px;
+	font-size: 15px;
+	text-align: center;
+	color: #D53E62;
+}
+
+#error_explanation {
+	color: #D53E62;
+}
+
+/*topページ*/
+.header_box {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
+}
+
+.top_image_box {
+	/*margin-top: 100px;
+	margin-left: 100px;*/
+	width: 100%;
+}
+
+
+.top_image {
+	background-position: top center;
+	background-image: url(top_image.jpg);
+	background-size: cover;
+	background-position: fixed;
+	position: relative;
+	width: 100%;
+	height: 900px;
+	margin-top: -20px;
+/*	-webkit-filter: grayscale(100%);
+  	filter: grayscale(100%);fa
+*/}
+
+.top_logo_box {
+	width: 580px;
+}
+
+.top_logo {
+	margin: 10px 0 0 176px;
+}
+
+.top_image_text_left {
+	width: 580px;
+	line-height: 16px;
+	padding-top: 20px;
+	margin-left: 80px;
+	padding-left: 100px;
+	color: white;
+	position: relative;
+	float: left;
+	display: inline-block;
+}
+
+.top_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.line1 {
+	font-size: 45px;
+	line-height: normal;
+}
+
+.line1:first-letter {
+	color: #b8d200;
+	font-size: 60px;
+}
+
+.line2 {
+	font-size: 45px;
+	line-height: 80px;
+}
+
+.top_image_text_right {
+	width: 660px;
+	float: right;
+	font-size: 20px;
+	margin-top: -66px;
+	transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+}
+
+.top_image_text_1 {
+	margin-left: 120px;
+}
+
+.top_image_text_2 {
+	margin-left: 40px;
+}
+
+.top_image_text_3 {
+	margin-left: 140px;
+}
+
+.top_image_text_4 {
+	margin-left: 230px;
+}
+
+.top_image_text_5 {
+	margin: 20px 0 0 10px;
+}
+
+.top_image_text_6 {
+	margin-left: 120px;
+}
+
+.top_image_text_7 {
+	margin: 20px 0 0 80px;
+}
+
+.top_image_text_8 {
+	margin: 5px 0 0 120px;
+}
+
+.top_header {
+	width: 100%;
+}
+
+.top_subtitle {
+	margin-left: 17px;
+	color: white;
+}
+
+.top_top {
+	width: 520px;
+	height: 260px;
+	margin: 50px 0 0 150px;
+	padding-top: 40px;
+	float: left;
+	background-color: rgba(0, 0, 0, .3);
+	border-radius: 10px;
+}
+
+.top_box_1 {
+	width: 145px;
+	height: 60px;
+	background-color: transparent;
+	float: left;
+	margin: 0 10px 0 14px;
+	border: 2px solid black;
+}
+
+.top_box_1:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+.top_middle {
+	width: 100%;
+}
+
+.top_box_2 {
+	width: 145px;
+	height: 60px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin: 0 10px 0 10px;
+}
+
+.top_box_2:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_box_3 {
+	width: 145px;
+	height: 60px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin-left: 10px;
+}
+
+.top_box_3:hover {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.google {
+	float: left;
+	width: 445px;
+	height: 50px;
+	margin: 20px 0 0 14px;
+	padding: 10px 0 18px 0;
+	color: black;
+	font-size: 17px;
+	text-align: center;
+	background-color: rgba(255, 255, 255, .6);
+	border-radius: 10px;
+}
+
+.google:hover {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+
+.top_text_1 {
+	width:100%;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+}
+
+.top_text_3 {
+	width:100%;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+}
+
+.top_text_4 {
+	width:100%;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 10px;
+	color: white;
+}
+
+.devise_image_text_left {
+	width: 580px;
+	line-height: 16px;
+	padding-top: 20px;
+	margin-left: 80px;
+	padding-left: 100px;
+	color: white;
+	position: relative;
+	float: left;
+	display: inline-block;
+}
+
+.devise_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.devise_line1 {
+	font-size: 45px;
+	line-height: normal;
+}
+
+.devise_line1:first-letter {
+	color: #b8d200;
+	font-size: 60px;
+}
+
+.devise_box {
+	text-align: center;
+	width: 520px;
+	height: 300px;
+	margin: 184px 0 0 150px;
+	float: left;
+	background-color: rgba(0, 0, 0, .3);
+	border-radius: 10px;
+	color: rgba(255, 255, 255, .8);
+}
+
+.log_in {
+	font-size: 30px;
+}
+
+.sign_up {
+	font-size: 30px;
+	margin-top: 3px;
+}
+
+.about {
+	margin-top: 100px;
+}
+
+@media screen and (max-width:750px) {
+.top_image_box {
+	width: 100%;
+	text-align: center;
+}
+
+.top_image {
+	background-position: top center;
+	background-image: url(phone_top.jpg);
+	background-size: cover;
+	background-position: fixed;
+	position: relative;
+	height: 900px;
+	margin-top: -20px;
+}
+
+.top_logo_box {
+	margin: 0 auto !important;
+	text-align: center;
+}
+
+.top_logo {
+	text-align: center;
+}
+.top_image_text_left {
+	width: 100% !important;
+	margin-left: -50px !important;
+	color: #7f7f7f;
+}
+
+.top_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.line1 {
+	font-size: 20px;
+	line-height: normal;
+}
+
+.line1:first-letter {
+	color: 	yellowgreen;
+	font-size: 30px;
+}
+
+.line2 {
+	font-size: 20px;
+}
+
+.top_image_text_right {
+	display: none;
+}
+
+.top_image_text_1 {
+	display: none;
+}
+
+.top_image_text_2 {
+	display: none;
+}
+
+.top_image_text_3 {
+	display: none;
+}
+
+.top_image_text_4 {
+	display: none;
+}
+
+.top_image_text_5 {
+	display: none;
+}
+
+.top_image_text_6 {
+	display: none;
+}
+
+.top_image_text_7 {
+	display: none;
+}
+
+.top_image_text_8 {
+	display: none;
+}
+
+.top_header {
+	width: 100%;
+}
+
+.top_subtitle p {
+	color: white;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.top_top {
+	text-align: center !important;
+	margin: 10px 0px 0 0px  !important;
+	width: 100%;
+	height: 200px;
+	padding-top: 20px;
+	background-color: rgba(0, 0, 0, .4);
+	border-radius: 10px;
+}
+
+.top_box_1 {
+	width: 160px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	margin: 0 20px 0 15px;
+	border: 2px solid black;
+}
+
+.top_box_1:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+.top_middle {
+	width: 100%;
+}
+
+.top_box_2 {
+	width: 160px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin: 0 10px 0 10px;
+}
+
+.top_box_2:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_box_3 {
+	width: 160px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin: 15px 20px 0 15px;
+}
+
+.top_box_3:hover {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.google {
+	width: 160px;
+	height: 50px;
+	margin: 15px 10px 0 10px !important;
+	font-size: 17px;
+	text-align: center;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+}
+
+.google span {
+	display: none;
+}
+
+.google:hover {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+.devise_image_text_left {
+	width: 100%;
+	margin: 0 0 0 -50px !important;
+	text-align: center !important;
+	line-height: 16px;
+	padding-top: 20px;
+	color: white;
+	position: relative;
+}
+
+.devise_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.devise_line1 {
+	font-size: 30px;
+	line-height: normal;
+	color: #7f7f7f;
+}
+
+.devise_line1:first-letter {
+	color: #b8d200;
+	font-size: 35px;
+}
+
+.devise_box {
+	text-align: center;
+	width: 100% !important;
+	height: 260px;
+	margin: 20px 0 0 0 !important;
+	float: left;
+	background-color: rgba(0, 0, 0, .3);
+	border-radius: 10px;
+	color: rgba(255, 255, 255, .8);
+}
+}
+
+
+@media screen and (max-width:425px) {
+.top_image_box {
+	width: 100%;
+	text-align: center;
+}
+
+.top_image {
+	background-position: top center;
+	background-image: url(phone_top.jpg);
+	background-size: cover;
+	background-position: fixed;
+	position: relative;
+	height: 900px;
+	margin-top: -20px;
+}
+
+.top_logo_box {
+	width: 100%;
+}
+
+.top_logo {
+	margin: 100px 0 0 0
+}
+
+.top_image_text_left {
+	width: 100% !important;
+	margin-left: -50px !important;
+	color: #7f7f7f;
+}
+
+.top_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.line1 {
+	font-size: 20px;
+	line-height: normal;
+}
+
+.line1:first-letter {
+	color: 	yellowgreen;
+	font-size: 30px;
+}
+
+.line2 {
+	font-size: 20px;
+}
+
+.top_image_text_right {
+	display: none;
+}
+
+.top_image_text_1 {
+	display: none;
+}
+
+.top_image_text_2 {
+	display: none;
+}
+
+.top_image_text_3 {
+	display: none;
+}
+
+.top_image_text_4 {
+	display: none;
+}
+
+.top_image_text_5 {
+	display: none;
+}
+
+.top_image_text_6 {
+	display: none;
+}
+
+.top_image_text_7 {
+	display: none;
+}
+
+.top_image_text_8 {
+	display: none;
+}
+
+.top_header {
+	width: 100%;
+}
+
+.top_subtitle p {
+	color: white;
+	text-align: center;
+	font-size: 15px;
+	margin-right: 5px;
+}
+
+.top_top {
+	text-align: center !important;
+	margin: 10px 0px 0 0px  !important;
+	width: 100%;
+	height: 200px;
+	padding-top: 20px;
+	background-color: rgba(0, 0, 0, .4);
+	border-radius: 10px;
+}
+
+.top_box_1 {
+	width: 130px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	margin: 0 20px 0 25px;
+	border: 2px solid black;
+}
+
+.top_box_1:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_middle {
+	width: 100%;
+}
+
+.top_box_2 {
+	width: 130px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin: 0 10px 0 10px;
+}
+
+.top_box_2:hover {
+  background-color: rgba(0, 0, 0, .7);
+  border: 3px solid white;
+}
+
+
+.top_box_3 {
+	width: 130px;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+	margin: 15px 20px 0 25px;
+}
+
+.top_box_3:hover {
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, .7);
+}
+
+.google {
+	width: 130px;
+	height: 50px;
+	margin: 15px 10px 0 10px !important;
+	font-size: 17px;
+	text-align: center;
+	background-color: transparent;
+	float: left;
+	border: 2px solid black;
+}
+
+.google span {
+	display: none;
+}
+
+.google:hover {
+	position:relative;
+	top:2px;
+	left:2px;
+}
+
+.devise_image_text_left {
+	width: 100%;
+	margin: 0 0 0 -50px !important;
+	text-align: center !important;
+	line-height: 16px;
+	padding-top: 20px;
+	color: white;
+	position: relative;
+}
+
+.devise_image_text_left h1 {
+	font-family: 'arial black';
+}
+
+.devise_line1 {
+	font-size: 30px;
+	line-height: normal;
+	color: #7f7f7f;
+}
+
+.devise_line1:first-letter {
+	color: #b8d200;
+	font-size: 35px;
+}
+
+.devise_box {
+	text-align: center;
+	width: 100% !important;
+	height: 260px;
+	margin: 20px 0 0 0 !important;
+	float: left;
+	background-color: rgba(0, 0, 0, .3);
+	border-radius: 10px;
+	color: rgba(255, 255, 255, .8);
+}
+}

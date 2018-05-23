@@ -82,6 +82,10 @@
 								      	</div>
 							      		<%= request.teacher.user.nickname %><br>
 							      		さんからのリクエスト<br>
+							      		<%= form_for(request, url: request_path(request.id)) do |r| %>
+			 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
+			 									<%= r.submit "ステータスを更新", class: "btn btn-primary", style:"margin-top:2px;"  %>
+			 							<% end %>
 							      		<%= form_for(@room, url: user_rooms_path(current_user.id), method: :post) do |f| %>
 								      		<%= hidden_field_tag :request, request.id %>
 							      			<%= f.hidden_field :send_user_id, :value => current_user.id %>
@@ -90,10 +94,6 @@
 							      			<%= f.hidden_field :student_id, :value => current_user.id %>
 							      			<%= f.submit "メッセージルームを作成" ,class:"btn btn-success", "data-confirm" => "リクエストは削除されます。メッセージルームを作成しますか？" %>
 							      		<% end %>
-							      		<%= form_for(request, url: request_path(request.id)) do |r| %>
-			 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
-			 									<%= r.submit "ステータスを更新", class: "btn btn-primary" %>
-			 							<% end %>
 			              			</div>
 		              			</div>
 		              			<% end %>
@@ -122,7 +122,7 @@
 							      		<% end %>
 							      		<%= form_for(request, url: request_path(request.id)) do |r| %>
 			 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
-			 									<%= r.submit "ステータスを更新", class: "btn btn-primary" %>
+			 									<%= r.submit "ステータスを更新", class: "btn btn-primary", style:"margin-top:2px;"  %>
 			 							<% end %>
 							      		</div>
 			              			</div>
@@ -144,7 +144,7 @@
 										      			<%= form_for(request) do |r| %>
 						 									<%= r.select :status,Request.statuses.keys, {}, {class: "btn btn-default dropdown-toggle"} %>
 						              						<%= r.submit "ステータスを更新", class: "btn btn-primary" %><br>
-									      				<%= link_to "削除", request_path(request), method: :delete, class:"btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+															<%= link_to "削除", request_path(request), method: :delete, class:"btn btn-danger", style:"width:138px; margin:2px 0 0 55px;",  "data-confirm" => "本当に削除しますか？" %>
 						              					<% end %>
 						              				</div>
 					              				</div>

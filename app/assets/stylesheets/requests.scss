@@ -1,3 +1,151 @@
-// Place all the styles related to the requests controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.requested_button {
+        width: 240px;
+        height: 34px;
+        padding-top: 0.1px;
+        text-align: center;
+        background-color: #CCC;
+        border-radius: 5px;
+}
+
+.request_img img {
+        margin: 0 13px 0 0;
+        width: 150px;
+        height: 150px;
+        float: left;
+}
+
+.request_img:hover {
+    transition:all 0.2s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
+}
+
+.request_box {
+        width: 500px;
+        height: 180px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+
+.request_text {
+        margin-top: 20px;
+}
+
+.request_send_box {
+        width: 420px;
+        height: 170px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+.request_box:nth-child(even) {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+
+@media screen and (max-width:750px) {
+.requested_button {
+        width: 240px;
+        height: 34px;
+        padding-top: 0.1px;
+        text-align: center;
+        background-color: #CCC;
+        border-radius: 5px;
+}
+
+.request_img img {
+        margin: 0 13px 0 0;
+        width: 150px;
+        height: 150px;
+        float: left;
+}
+
+.request_img:hover {
+    transition:all 0.2s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
+}
+
+.request_box {
+    width: 100%;
+    height: 240px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+
+.request_text {
+        margin-top: 20px;
+}
+
+.request_send_box {
+        width: 420px;
+        height: 170px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+.request_box:nth-child(even) {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+}
+
+@media screen and (max-width:375px) {
+.requested_button {
+        width: 240px;
+        height: 34px;
+        padding-top: 0.1px;
+        text-align: center;
+        background-color: #CCC;
+        border-radius: 5px;
+}
+
+.request_img img {
+        margin: 0 13px 0 0;
+        width: 150px;
+        height: 150px;
+        float: left;
+}
+
+.request_img:hover {
+    transition:all 0.2s ease; /*0.5秒かけて要素を変化させる*/
+    opacity: 0.7;/*要素の透明度を指定*/
+    filter: alpha(opacity=70); /*ie6、7の透明度指定*/
+    /*ちなみにie8の透明度指定はこれ→ -ms-filter: "alpha(opacity=70)";*/
+}
+
+.request_box {
+    width: 100%;
+    height: 240px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+
+.request_text {
+        margin-top: 20px;
+}
+
+.request_send_box {
+        width: 420px;
+        height: 170px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+
+.request_box:nth-child(even) {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #F5A9BC;
+}
+}

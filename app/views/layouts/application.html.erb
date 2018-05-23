@@ -1,35 +1,37 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-	<%= csrf_meta_tags %>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<html lang="en">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag href: 'app/assets/stylesheets/flat-ui.css' %>
-	<%= javascript_include_tag 'application' %>
-	<%= javascript_include_tag default: 'app/assets/javascripts/vendor/jquery.min.js' %>
-	<%= javascript_include_tag default: 'app/assets/javascripts/flat-ui.js' %>
-	<%= javascript_include_tag default: 'app/assets/javascripts/flat-ui.min.js' %>
+		<%= csrf_meta_tags %>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<html lang="en">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag href: 'app/assets/stylesheets/flat-ui.css' %>
+		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag default: 'app/assets/javascripts/vendor/jquery.min.js' %>
+		<%= javascript_include_tag default: 'app/assets/javascripts/flat-ui.js' %>
+		<%= javascript_include_tag default: 'app/assets/javascripts/flat-ui.min.js' %>
 
-    <title>LangPort</title>
+	    <title>LangPort</title>
 	</head>
   	<body>
-  	<header>
-		<%= image_tag("bottom_image.jpg", :class => 'bottom_img') %>
-	</header>
-	<% unless flash.empty? %>
-	 　<script type="text/javascript">
-	 　　<% flash.each do |f| %>
-	 　　　<% type = f[0].to_s.gsub('alert','error').gsub('notice','info') %>
-	　　　　　toastr['<%=type %>']('<%=f[1] %>');
-	 　　<% end %>
-	　　</script>
-	<% end %>
-    	<%= yield %>
+	  	<header>
+			<%= image_tag("bottom_image.jpg", :class => 'bottom_img') %>
+		</header>
+		<% unless flash.empty? %>
+		  <div class="toastr">
+		 　<script type="text/javascript">
+		 　　<% flash.each do |f| %>
+		 　　　<% type = f[0].to_s.gsub('alert','error').gsub('notice','info') %>
+		　　　　　toastr['<%=type %>']('<%=f[1] %>');
+		 　　<% end %>
+		　　</script>
+		  </div>
+		<% end %>
+	    <%= yield %>
   	</body>
 </html>

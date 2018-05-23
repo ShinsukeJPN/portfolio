@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
+	before_action :correct_user, only: [:edit]
 	 protect_from_forgery :except => [:create]
 	def new
 		@user = User.find(params[:user_id])
@@ -14,6 +15,7 @@ class StudentsController < ApplicationController
 	def create
 		@user = current_user
 		@student = Student.new(student_params)
+		@student.id = current_user.id
 		if @student.save
 			redirect_to student_path(current_user)
 		else
@@ -64,5 +66,12 @@ class StudentsController < ApplicationController
 										:other_language,
 										language_students_attributes: [:id, :language_id, :_destroy]
 										)
+	end
+
+	def correct_user
+		@student = Student.find(params[:id])
+			unless current_user.id == @student.id
+				redirect_to student_path(current_user)
+			end
 	end
 end

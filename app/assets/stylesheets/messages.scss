@@ -1,3 +1,259 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.balloon-right {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 5px 10px 5px 0;
+	padding: 3px 4px;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #4ec4d3;
+ 	box-sizing: border-box;
+}
+
+.balloon-right:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-left: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-right:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-left: 14px solid #4ec4d3;
+ 	z-index: 1;
+}
+
+.message_header {
+	width: 100%;
+	text-align: center;
+}
+
+.faceicon img{
+	margin-top: -20px;
+    width: 70px;
+    height: 70px;
+    border: solid 3px #CCC;
+}
+
+.header_text {
+	width: 100%;
+}
+
+.balloon-left {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 0 1.5em 15px;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #b8d200;
+ 	box-sizing: border-box;
+}
+
+.balloon-left:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-right: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-left:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-right: 14px solid #b8d200;
+ 	z-index: 1;
+}
+
+@media screen and (max-width:750px) {
+.balloon-right {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 5px 10px 5px 0;
+	padding: 3px 4px;
+	min-width: 50px;
+ 	max-width: 70%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #4ec4d3;
+ 	box-sizing: border-box;
+}
+
+.balloon-right:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-left: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-right:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-left: 14px solid #4ec4d3;
+ 	z-index: 1;
+}
+
+.message_header {
+	width: 100%;
+	text-align: center;
+}
+
+.faceicon img{
+	margin-top: -20px;
+    width: 70px;
+    height: 70px;
+    border: solid 3px #CCC;
+}
+
+.header_text {
+	width: 100%;
+}
+
+.balloon-left {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 0 1.5em 15px;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #b8d200;
+ 	box-sizing: border-box;
+}
+
+.balloon-left:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-right: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-left:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-right: 14px solid #b8d200;
+ 	z-index: 1;
+}
+}
+
+
+@media screen and (max-width:425px) {
+.balloon-right {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 5px 10px 5px 0;
+	padding: 3px 4px;
+	min-width: 50px;
+ 	max-width: 70%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #4ec4d3;
+ 	box-sizing: border-box;
+}
+
+.balloon-right:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-left: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-right:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-left: 14px solid #4ec4d3;
+ 	z-index: 1;
+}
+
+.message_header {
+	width: 100%;
+	text-align: center;
+}
+
+.faceicon img{
+	margin-top: -20px;
+    width: 70px;
+    height: 70px;
+    border: solid 3px #CCC;
+}
+
+.header_text {
+	width: 100%;
+}
+
+.balloon-left {
+ 	position: relative;
+	display: inline-block;
+ 	margin: 1.5em 0 1.5em 15px;
+	min-width: 50px;
+ 	max-width: 90%;
+ 	color: gray;
+	font-size: 15px;
+ 	border: solid 3px #b8d200;
+ 	box-sizing: border-box;
+}
+
+.balloon-left:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -24px;
+ 	margin-top: -12px;
+	border: 12px solid transparent;
+	border-right: 12px solid #FFF;
+ 	z-index: 2;
+}
+
+.balloon-left:after{
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+ 	margin-top: -14px;
+	border: 14px solid transparent;
+	border-right: 14px solid #b8d200;
+ 	z-index: 1;
+}
+}
