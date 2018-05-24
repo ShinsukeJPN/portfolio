@@ -155,14 +155,16 @@
 table td {
 	width: 50px;
 }
+
 .side_logo_box {
-	margin-top: 8px;
+	margin-top: 30px !important;
 }
 
 .header_bar {
   display: inline-block;
   z-index: 9999;
   position: fixed;
+  margin-bottom: 10px;
   width: 100%;
   height: 70px;
   top: 0px;
@@ -300,23 +302,11 @@ nav.globalMenuSp.active {
 }
 
 .find_s_box:before{
-  content:"";
-  position: absolute;
-  top: 0px;
-  left: -110px;
-  height:35px;
-  width:120px;
-  background : rgba(184, 210, 0, 0.6);
-  opacity: 0.8;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
+  display: none;
 }
 
 .find_s_box:hover:before{
-  left:0;
+  display: none;
 }
 
 .find_t_box {
@@ -335,24 +325,13 @@ nav.globalMenuSp.active {
 }
 
 .find_t_box:before{
-  content:"";
-  position: absolute;
-  top: 0px;
-  left: -110px;
-  height:35px;
-  width:120px;
-  background : rgba(184, 210, 0, 0.6);
-  opacity: 0.8;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  -ms-transition: 0.3s;
-  transition: 0.3s;
+  display: none;
 }
 
 .find_t_box:hover:before{
-  left:0;
+  display: none;
 }
+
 
 .category_box {
 	display: none;
@@ -386,8 +365,7 @@ table {
 }
 
 .table_wrap {
-  overflow: auto;
-  position:relative;
+  width: 100% !important;
 }
 
 td.data {
@@ -395,8 +373,8 @@ td.data {
 }
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width: 375px) {
 .find_s_box {
-  margin: 0;
+  margin: 0 0 0 5px;
 }
 }

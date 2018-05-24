@@ -229,7 +229,7 @@ left:2px;
 
 @media screen and (max-width:750px) {
 .toastr {
-	z-index: 9999;
+	display: none;
 }
 
 .top_logo_box {

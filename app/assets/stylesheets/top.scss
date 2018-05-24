@@ -220,6 +220,14 @@
 	color: white;
 }
 
+.top_text_2 {
+	width:100%;
+	text-align: center;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+}
+
 .top_text_3 {
 	width:100%;
 	text-align: center;
@@ -304,12 +312,13 @@
 
 .top_logo_box {
 	margin: 0 auto !important;
-	text-align: center;
+	width: 100%;
 }
 
 .top_logo {
-	text-align: center;
+	margin: 80px 0 auto 0!important;
 }
+
 .top_image_text_left {
 	width: 100% !important;
 	margin-left: -50px !important;
@@ -496,7 +505,7 @@
 }
 
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:375px) {
 .top_image_box {
 	width: 100%;
 	text-align: center;
@@ -517,7 +526,7 @@
 }
 
 .top_logo {
-	margin: 100px 0 0 0
+	margin: 100px 0 0 0;
 }
 
 .top_image_text_left {

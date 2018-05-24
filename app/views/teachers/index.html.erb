@@ -1,5 +1,42 @@
 <%= render 'shared/category' %>
 	<div class="col-lg-8">
+		<div class="mobile_search_button">
+    	    <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#mobile_search" style="width: 100%;" >
+        		<p style="text-align:center; margin:0 auto;">先生を絞込検索</p>
+        	</button>
+        </div>
+		<div id="mobile_search" class="collapse">
+			<div class="dropdown">
+				<div class="mobile_search_box">
+					<%= search_form_for(@q, :url => {:controller => '/teachers', :action => 'index'}) do |f| %>
+							<div class="col-lg-12">
+								<div class="col-lg-5">
+									<h5>地域で探す</h5>
+										<%= f.collection_select :user_areas_id_eq, Area.all, :id, :area_name, include_blank: '選択してください' %>
+									<h5>詳細地域を入力</h5>
+				          				<%= f.search_field :detailed_address_1_or_detailed_address_2_or_detailed_address_3_cont, class: "form-control search_form", placeholder: "その他の市・町など" %>
+				      			</div>
+				      			<div class="col-lg-4">
+									<h5>言語で探す</h5>
+										<%= f.collection_radio_buttons :languages_id_eq, Language.all, :id, :language_name %>
+									<h5>その他の言語</h5>
+									<div class="form-inline">
+										<%= f.search_field :other_language_cont, class: "form-control search_form", placeholder:"例:タガログ" %>語
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<h5>値段を選択(/1h)</h5>
+									<div class="select">
+										<%= f.select :budget_eq, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000", "3500円" => "3500", "4000円" => "4000", "4500円" => "4500", "5000円" => "5000"}, include_blank: '選択してください' %>
+									</div>
+									     	<%= button_tag :type => "submit", :class =>" search-button fa fa-search" do %>
+					      					<% end %>
+					      		</div>
+					      	</div>
+			 		<% end %>
+			 	</div>
+		 	</div>
+	 	</div>
 		<div class="search_box">
 					<%= search_form_for(@q, :url => {:controller => '/teachers', :action => 'index'}) do |f| %>
 					<!-- 　チェックボックスが長過ぎるのでやめ -->
@@ -8,7 +45,7 @@
 						<%# end %>
 					<h4 style="margin:0 auto;">先生を検索</h4>
 					<div class="col-lg-12">
-						<div class="col-lg-4">
+						<div class="col-lg-5">
 							<h5>地域で探す</h5>
 								<%= f.collection_select :user_areas_id_eq, Area.all, :id, :area_name, include_blank: '選択してください' %>
 							<h5>詳細地域を入力</h5>
@@ -25,7 +62,7 @@
 								<%= f.search_field :other_language_cont, class: "form-control search_form", placeholder:"例:タガログ" %>語
 							</div>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-lg-3">
 							<h5>値段を選択(/1h)</h5>
 							<div class="select">
 								<%= f.select :budget_eq, {"1500円" => "1500", "2000円" => "2000", "2500円" => "2500", "3000円" => "3000", "3500円" => "3500", "4000円" => "4000", "4500円" => "4500", "5000円" => "5000"}, include_blank: '選択してください' %>
