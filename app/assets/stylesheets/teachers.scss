@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .area_box {
 	width: 350px;
 	height: 100%;
@@ -7,6 +8,8 @@
 	border: 2px solid;
 }
 
+=======
+>>>>>>> 15568b0... Afterdeployment
 .teacher_info {
 	text-align: center;
 	border-bottom: 1px solid #CCC;
@@ -70,9 +73,12 @@
 	color: #546E7A;
 }
 
+<<<<<<< HEAD
 .mobile_search_button {
 	display: none;
 }
+=======
+>>>>>>> 15568b0... Afterdeployment
 
 .search_box {
 	width: 100%;
@@ -109,8 +115,12 @@
 .search-button {
 	width: 60px;
 	height: 40px;
+<<<<<<< HEAD
 	margin: 40p
 x 3px 0 10px;
+=======
+	margin: 40px 3px 0 10px;
+>>>>>>> 15568b0... Afterdeployment
 	border-radius: 10px;
 	background-color: #b8d200;
 }
@@ -172,12 +182,17 @@ caption {
 
 @media screen and (max-width:750px) {
 
+<<<<<<< HEAD
 .teacher_info_text h2 {
 	font-size: 23px;
 }
 
 .area_box {
 	width: 100%;
+=======
+.area_box {
+	width: 350px;
+>>>>>>> 15568b0... Afterdeployment
 	height: 100%;
 	background-color: mintcream;
 	border-radius: 50px;
@@ -185,6 +200,7 @@ caption {
 	border: 2px solid;
 }
 
+<<<<<<< HEAD
 .mobile_search_button {
 	display: inline-block;
 	width: 100%;
@@ -202,6 +218,28 @@ caption {
 }
 
 .area_select {
+=======
+.search_box {
+	width: 100%;
+	height: 600px;
+	background : rgba(184, 210, 0, 0.2);
+	color: black;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.32);/*影*/
+ 	padding: 0.5em 1em;
+ 	background-image: url(search_image.jpg);
+
+}
+
+.search_box h4 {
+    padding: 6px;
+    text-align: center;
+    color: #535641;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+ }
+
+.area_select{
+>>>>>>> 15568b0... Afterdeployment
 	width: 180px;
 }
 
@@ -216,7 +254,11 @@ caption {
 .search-button {
 	width: 100%;
 	height: 40px;
+<<<<<<< HEAD
 	margin: 0px;
+=======
+	margin: 40px 3px 0 10px;
+>>>>>>> 15568b0... Afterdeployment
 	border-radius: 10px;
 	background-color: #b8d200;
 }
@@ -252,10 +294,17 @@ caption {
 }
 
 .index_box {
+<<<<<<< HEAD
 	width: 100% !important;
 	height: 470px;
 	padding: 15px 0 0 20px;
     margin: 5px auto !important;
+=======
+	width: 300px;
+	height: 470px;
+	padding: 15px 0 0 20px;
+    margin: 2em auto;
+>>>>>>> 15568b0... Afterdeployment
     border: solid 4px #4ec4d3;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }
@@ -264,6 +313,7 @@ table {
 	width: 100%;
 	float: left;
 }
+<<<<<<< HEAD
 }
 
 @media screen and (max-width: 375px) {
@@ -278,4 +328,10 @@ table {
 }
 
 
+=======
+
+
+}
+
+>>>>>>> 15568b0... Afterdeployment
 @import "users";

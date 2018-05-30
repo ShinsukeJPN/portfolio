@@ -229,7 +229,11 @@ left:2px;
 
 @media screen and (max-width:750px) {
 .toastr {
+<<<<<<< HEAD
 	display: none;
+=======
+	z-index: 9999;
+>>>>>>> 15568b0... Afterdeployment
 }
 
 .top_logo_box {
@@ -241,10 +245,53 @@ left:2px;
 	text-align: center;
 }
 
+<<<<<<< HEAD
 .about_logo {
 	margin: 30px auto 0 auto;
 }
 
+.rules_image {
+	width: 100%;
+	height: 100%;
+	margin-top: -200px;
+	background-image: url(phone_top.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: top center;
+}
+
+.rules_headline {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 200px;
+	width: 200px;
+	height: 100px;
+}
+
+.rules_headline h2 {
+	font-size: 50px;
+}
+
+.rules_texts {
+	text-align: center;
+	float: none;
+}
+
+.rules_text {
+	margin: 5px 0 0 0;
+	width: 100%;
+	padding: 30px 0 30px 0;
+	background: rgba(255,255,255,.5);
+	border-radius: 20px;
+}
+
+.rules_headline {
+	border-bottom : 10px;
+}
+
+
+.rules_text1 {
+=======
 .rules_image {
 	width: 100%;
 	height: 100%;
@@ -294,6 +341,7 @@ left:2px;
 }
 
 .rules_text2 {
+>>>>>>> 15568b0... Afterdeployment
 	margin: 5px 0 0 0;
 	width: 100%;
 	padding: 30px 0 30px 0;
@@ -301,7 +349,11 @@ left:2px;
 	border-radius: 20px;
 }
 
+<<<<<<< HEAD
+.rules_text2 {
+=======
 .rules_text3 {
+>>>>>>> 15568b0... Afterdeployment
 	margin: 5px 0 0 0;
 	width: 100%;
 	padding: 30px 0 30px 0;
@@ -309,7 +361,11 @@ left:2px;
 	border-radius: 20px;
 }
 
+<<<<<<< HEAD
+.rules_text3 {
+=======
 .rules_text4 {
+>>>>>>> 15568b0... Afterdeployment
 	margin: 5px 0 0 0;
 	width: 100%;
 	padding: 30px 0 30px 0;
@@ -317,6 +373,19 @@ left:2px;
 	border-radius: 20px;
 }
 
+<<<<<<< HEAD
+.rules_text4 {
+=======
+.rules_text5 {
+>>>>>>> 15568b0... Afterdeployment
+	margin: 5px 0 0 0;
+	width: 100%;
+	padding: 30px 0 30px 0;
+	background: rgba(255,255,255,.5);
+	border-radius: 20px;
+}
+
+<<<<<<< HEAD
 .rules_text5 {
 	margin: 5px 0 0 0;
 	width: 100%;
@@ -352,6 +421,35 @@ left:2px;
 
 }
 
+=======
+.rules_image1 {
+	display: none;
+	padding-top: 100px;
+}
+
+.rules_image2 {
+	padding-top: 100px;
+}
+
+.rules_image3 {
+	padding-top: 100px;
+}
+
+.rules_image4 {
+	padding-top: 100px;
+}
+
+.rules_image5 {
+	padding-top: 100px;
+}
+
+.rules_image6 {
+	padding-top: 100px;
+}
+
+}
+
+>>>>>>> 15568b0... Afterdeployment
 /*pagination*/
 
 .first {
