@@ -121,7 +121,7 @@ left:2px;
 
 .about_logo {
 	display: block;
-	margin: 30px auto 0 auto;
+	margin: 0 auto;
 }
 
 
@@ -239,6 +239,10 @@ left:2px;
 
 .top_logo {
 	text-align: center;
+}
+
+.about_logo {
+	margin: 30px auto 0 auto;
 }
 
 .rules_image {
