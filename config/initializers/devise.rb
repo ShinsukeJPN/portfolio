@@ -263,8 +263,8 @@ Devise.setup do |config|
   config.omniauth :google_oauth2,
                   Rails.application.secrets.google_client_id,
                   Rails.application.secrets.google_client_secret,
-                  provider_ignores_state: true
-
+                  provider_ignores_state: true,
+                  skip_jwt: true
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
