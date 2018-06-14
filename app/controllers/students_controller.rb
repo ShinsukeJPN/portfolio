@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
-	before_action :correct_user, only: [:edit]
+	before_action :correct_user, only: [:show, :edit]
 	 protect_from_forgery :except => [:create]
 	def new
 		@user = User.find(params[:user_id])
