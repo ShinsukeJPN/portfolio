@@ -1,5 +1,7 @@
 class AboutsController < ApplicationController
-	layout 'about'
-	def rules
-	end
+  layout 'about'
+
+  def rules
+  end
+
 end

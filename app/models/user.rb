@@ -28,9 +28,8 @@ class User < ApplicationRecord
     without_soft_destroyed.where(email: warden_conditions[:email]).first
   end
 
- def self.find_for_google_oauth2(auth)
+  def self.find_for_google_oauth2(auth)
     user = User.where(email: auth.info.email).first
-
     unless user
       user = User.create(name:     auth.info.name,
                          provider: auth.provider,
@@ -38,9 +37,8 @@ class User < ApplicationRecord
                          email:    auth.info.email,
                          token:    auth.credentials.token,
                          password: Devise.friendly_token[0, 20])
-    end
-    user
+     end
+     user
   end
-
 
 end
