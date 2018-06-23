@@ -11,7 +11,7 @@
                     <th> 通報された人(id) </th>
                     <th> 通報した人 </th>
                     <th> 通報種類 </th>
-                    <th> 通報内容 </th>
+                    <th> 通報コメント </th>
                     <th> 対応したら削除 </th>
                 </tr>
             </thead>
@@ -19,9 +19,10 @@
                 <% @reports.each do |report| %>
                     <tr>
                         <% @reported_user = User.find(report.reported_user_id).nickname %>
+                        <% @reported_user_id = User.find(report.reported_user_id).id %>
                         <% @user = User.find(report.reported_user_id) %>
                         <%= link_to user_path(@user) do %>
-                         <td> <%= @reported_user %>(<%= reported_user.id %>) </td>
+                         <td> <%= @reported_user %>(<%= @reported_user_id %>) </td>
                         <% end %>
                          <td> <%= report.user.nickname %> </td>
                          <td> <%= report.report_reason %> </td>

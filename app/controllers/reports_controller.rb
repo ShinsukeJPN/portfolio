@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   def create
-    if params[:reservation].present?
+    if params[:reported_user_id] && [:user_id].present?
       redirect_to user_reservations_path(current_user), flash: {reported:"すでにこのユーザを報告しています!"}
     else
     @report = Report.new(report_params)
