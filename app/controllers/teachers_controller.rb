@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :correct_user, only: [:show, :edit]
+  before_action :correct_user, only: [:edit]
   protect_from_forgery :except => [:create]
 
   def new

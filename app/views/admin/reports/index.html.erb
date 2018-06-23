@@ -19,7 +19,7 @@
                 <% @reports.each do |report| %>
                     <tr>
                         <% @reported_user = User.find(report.reported_user_id).nickname %>
-                        <% @reported_user_id = User.find(report.reported_user_id).id %>
+                        <% @reportedp_user_id = User.find(report.reported_user_id).id %>
                         <% @user = User.find(report.reported_user_id) %>
                         <%= link_to user_path(@user) do %>
                          <td> <%= @reported_user %>(<%= @reported_user_id %>) </td>

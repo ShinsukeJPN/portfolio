@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:show, :edit]
+  before_action :correct_user, only: [:edit]
   def edit
     @user = User.find(params[:id])
     unless @user.user_areas.exists?
